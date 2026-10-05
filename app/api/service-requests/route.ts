@@ -9,6 +9,20 @@ const allowedServices = new Set([
   'Community or partnership support',
 ])
 
+export async function GET() {
+  try {
+    const result = await db.execute(sql`
+      SELECT id, service, email, details, created_at
+      FROM service_requests
+      ORDER BY created_at DESC
+      LIMIT 100
+    `)
+    return NextResponse.json({ requests: result.rows })
+  } catch {
+    return NextResponse.json({ error: 'We could not load service requests.' }, { status: 500 })
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json()

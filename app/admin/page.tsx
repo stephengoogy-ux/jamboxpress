@@ -46,7 +46,19 @@ const requests = [
   ['Island Community Centre', 'Community program support', 'Victoria, BC', 'Sep 27, 11:05 AM', 'In review', 'IC', 'purple'],
 ]
 
-function ModuleView({ active, choose }: { active: string; choose: (label: string) => void }) {
+type ServiceRequest = {
+  id: number
+  service: string
+  email: string
+  details: string
+  created_at: string
+}
+
+function ModuleView({ active, choose, serviceRequests }: { active: string; choose: (label: string) => void; serviceRequests: ServiceRequest[] }) {
+  if (active === 'Service requests') return <>
+    <div className="admin-page-heading"><div><p className="admin-overline">INTAKE PIPELINE <span className="live-pill">● LIVE</span></p><h1>Service requests</h1><p>Review new enquiries and move each request into the right service workflow.</p></div><button className="admin-primary"><ClipboardList size={17} />New service request</button></div>
+    <section className="admin-card admin-requests"><div className="admin-card-heading"><div><h2>Incoming enquiries</h2><p>{serviceRequests.length} requests received through the public intake form.</p></div><span className="status status-active">Synced</span></div><div className="admin-table-wrap">{serviceRequests.length ? <table><thead><tr><th>Service</th><th>Email</th><th>Details</th><th>Received</th><th /></tr></thead><tbody>{serviceRequests.map((request) => <tr key={request.id}><td><b>{request.service}</b></td><td>{request.email}</td><td className="request-details">{request.details || 'No additional details'}</td><td>{new Date(request.created_at).toLocaleDateString('en-CA')}</td><td><button className="row-more" aria-label={`Review request from ${request.email}`}><MoreHorizontal size={17} /></button></td></tr>)}</tbody></table> : <div className="empty-module compact"><div className="admin-stat-icon blue"><ClipboardList size={22}/></div><h2>No requests yet</h2><p>New service enquiries will appear here after they are submitted.</p></div>}</div></section>
+  </>
   if (active === 'Workforce map' || active === 'Attendance & check-ins') return <>
     <div className="admin-page-heading"><div><p className="admin-overline">WORKFORCE OPERATIONS <span className="live-pill">● LIVE</span></p><h1>{active === 'Workforce map' ? 'Workforce map' : 'Attendance & check-ins'}</h1><p>Keep every visit visible, verified and supported across Greater Victoria and Vancouver Island.</p></div><button className="admin-primary"><MapPin size={17} />{active === 'Workforce map' ? 'Add service zone' : 'Review exceptions'}</button></div>
     <div className="module-stat-grid"><article><span><UserCheck size={16}/>On duty now</span><strong>24</strong><small>of 38 scheduled shifts</small></article><article><span><MapPin size={16}/>Active geofences</span><strong>18</strong><small>Victoria · Saanich · Nanaimo</small></article><article><span><Clock3 size={16}/>Verified visits</span><strong>96.8%</strong><small className="positive">+2.4% this month</small></article><article><span><ShieldAlert size={16}/>Exceptions</span><strong>4</strong><small className="warning">Needs review today</small></article></div>
@@ -66,8 +78,23 @@ export default function AdminPage() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [active, setActive] = useState('Overview')
   const [expanded, setExpanded] = useState(false)
+  const [serviceRequests, setServiceRequests] = useState<ServiceRequest[]>([])
 
-  const choose = (label: string) => { setActive(label); setMenuOpen(false) }
+  const choose = async (label: string) => {
+    setActive(label)
+    setMenuOpen(false)
+    if (label === 'Service requests') {
+      try {
+        const response = await fetch('/api/service-requests')
+        if (response.ok) {
+          const data = await response.json()
+          setServiceRequests(data.requests ?? [])
+        }
+      } catch {
+        setServiceRequests([])
+      }
+    }
+  }
 
   return (
     <div className="admin-shell">
@@ -87,7 +114,7 @@ export default function AdminPage() {
       <main className="admin-main">
         <header className="admin-header"><button className="admin-menu" onClick={() => setMenuOpen(true)} aria-label="Open admin menu"><Menu size={21} /></button><div className="admin-breadcrumb"><span>Workspace</span><b>/</b><strong>{active}</strong></div><div className="admin-header-actions"><div className="admin-search"><Search size={16} /><input aria-label="Search workspace" placeholder="Search anything..." /></div><button className="admin-icon-button admin-notification" aria-label="Notifications"><Bell size={18} /><i /></button><div className="admin-header-user"><span className="admin-user-avatar">AD</span><span><b>Admin</b><small>Super administrator</small></span><ChevronDown size={15} /></div></div></header>
         <div className="admin-content">
-          {active !== 'Overview' ? <ModuleView active={active} choose={choose} /> : <>
+          {active !== 'Overview' ? <ModuleView active={active} choose={choose} serviceRequests={serviceRequests} /> : <>
           <div className="admin-page-heading"><div><p className="admin-overline">MONDAY, SEPTEMBER 29, 2026 <span className="live-pill">● LIVE</span></p><h1>Good morning, Admin.</h1><p>Here&apos;s what&apos;s happening across Lifeline today.</p></div><button className="admin-primary"><ClipboardList size={17} />New service request</button></div>
           <div className="admin-alert"><div><AlertTriangle size={17} /><b>3 items need your attention</b><span>2 documents expire this week and 1 shift is unassigned.</span></div><button>Review now →</button></div>
           <section className="admin-stat-grid" aria-label="Executive overview"><article><div className="admin-stat-icon blue"><ClipboardList size={20} /></div><span>Open requests</span><strong>24</strong><small className="positive">+8.2% <b>vs last month</b></small></article><article><div className="admin-stat-icon green"><Users size={20} /></div><span>Active clients</span><strong>186</strong><small className="positive">+12 <b>this month</b></small></article><article><div className="admin-stat-icon gold"><CalendarDays size={20} /></div><span>Scheduled today</span><strong>38</strong><small className="neutral">6 <b>need attention</b></small></article><article><div className="admin-stat-icon purple"><WalletCards size={20} /></div><span>Revenue this month</span><strong>$86.5k</strong><small className="positive">+14.6% <b>vs last month</b></small></article></section>
