@@ -9,6 +9,8 @@ const allowedServices = new Set([
   'Community or partnership support',
 ])
 
+const allowedStatuses = new Set(['new', 'in_review', 'scheduled', 'closed'])
+
 export async function GET() {
   try {
     const result = await db.execute(sql`
@@ -20,6 +22,30 @@ export async function GET() {
     return NextResponse.json({ requests: result.rows })
   } catch {
     return NextResponse.json({ error: 'We could not load service requests.' }, { status: 500 })
+  }
+}
+
+export async function PATCH(request: Request) {
+  try {
+    const body = await request.json()
+    const id = typeof body.id === 'string' ? body.id.trim() : ''
+    const status = typeof body.status === 'string' ? body.status.trim() : ''
+
+    if (!id || !allowedStatuses.has(status)) {
+      return NextResponse.json({ error: 'Please provide a valid request and status.' }, { status: 400 })
+    }
+
+    const result = await db.execute(sql`
+      UPDATE service_requests
+      SET status = ${status}
+      WHERE id = ${id}::uuid
+      RETURNING id, service, email, details, status, created_at
+    `)
+
+    if (!result.rows.length) return NextResponse.json({ error: 'Request not found.' }, { status: 404 })
+    return NextResponse.json({ request: result.rows[0] })
+  } catch {
+    return NextResponse.json({ error: 'We could not update this request.' }, { status: 500 })
   }
 }
 

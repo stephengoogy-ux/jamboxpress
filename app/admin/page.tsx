@@ -47,19 +47,43 @@ const requests = [
 ]
 
 type ServiceRequest = {
-  id: number
+  id: string
   service: string
   email: string
   details: string
+  status: 'new' | 'in_review' | 'scheduled' | 'closed'
   created_at: string
 }
 
-function ModuleView({ active, choose, serviceRequests }: { active: string; choose: (label: string) => void; serviceRequests: ServiceRequest[] }) {
+const requestStatuses = [
+  { value: 'new', label: 'New' },
+  { value: 'in_review', label: 'In review' },
+  { value: 'scheduled', label: 'Scheduled' },
+  { value: 'closed', label: 'Closed' },
+] as const
+
+function ModuleView({ active, choose, serviceRequests, setServiceRequests }: { active: string; choose: (label: string) => void; serviceRequests: ServiceRequest[]; setServiceRequests: (requests: ServiceRequest[]) => void }) {
   const [selectedRequest, setSelectedRequest] = useState<ServiceRequest | null>(null)
+  const [updatingId, setUpdatingId] = useState<string | null>(null)
+
+  const updateRequestStatus = async (id: string, status: ServiceRequest['status']) => {
+    setUpdatingId(id)
+    try {
+      const response = await fetch('/api/service-requests', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, status }) })
+      if (!response.ok) throw new Error('Unable to update request')
+      const data = await response.json()
+      setServiceRequests(serviceRequests.map((request) => request.id === id ? data.request : request))
+      setSelectedRequest((request) => request?.id === id ? data.request : request)
+    } catch {
+      // Keep the current status visible when the update fails.
+    } finally {
+      setUpdatingId(null)
+    }
+  }
 
   if (active === 'Service requests') return <>
     <div className="admin-page-heading"><div><p className="admin-overline">INTAKE PIPELINE <span className="live-pill">● LIVE</span></p><h1>Service requests</h1><p>Review new enquiries and move each request into the right service workflow.</p></div><button className="admin-primary"><ClipboardList size={17} />New service request</button></div>
-    <section className="admin-card admin-requests"><div className="admin-card-heading"><div><h2>Incoming enquiries</h2><p>{serviceRequests.length} requests received through the public intake form.</p></div><span className="status status-active">Synced</span></div><div className="admin-table-wrap">{serviceRequests.length ? <table><thead><tr><th>Service</th><th>Email</th><th>Details</th><th>Received</th><th /></tr></thead><tbody>{serviceRequests.map((request) => <tr key={request.id}><td><b>{request.service}</b></td><td>{request.email}</td><td className="request-details">{request.details || 'No additional details'}</td><td>{new Date(request.created_at).toLocaleDateString('en-CA')}</td><td><button className="row-more" aria-label={`Review request from ${request.email}`} onClick={() => setSelectedRequest(request)}><MoreHorizontal size={17} /></button></td></tr>)}</tbody></table> : <div className="empty-module compact"><div className="admin-stat-icon blue"><ClipboardList size={22}/></div><h2>No requests yet</h2><p>New service enquiries will appear here after they are submitted.</p></div>}</div></section>
+    <section className="admin-card admin-requests"><div className="admin-card-heading"><div><h2>Incoming enquiries</h2><p>{serviceRequests.length} requests received through the public intake form.</p></div><span className="status status-active">Synced</span></div><div className="admin-table-wrap">{serviceRequests.length ? <table><thead><tr><th>Service</th><th>Email</th><th>Details</th><th>Received</th><th>Status</th><th /></tr></thead><tbody>{serviceRequests.map((request) => <tr key={request.id}><td><b>{request.service}</b></td><td>{request.email}</td><td className="request-details">{request.details || 'No additional details'}</td><td>{new Date(request.created_at).toLocaleDateString('en-CA')}</td><td><select aria-label={`Update status for ${request.email}`} value={request.status} disabled={updatingId === request.id} onChange={(event) => updateRequestStatus(request.id, event.target.value as ServiceRequest['status'])}>{requestStatuses.map((status) => <option key={status.value} value={status.value}>{status.label}</option>)}</select></td><td><button className="row-more" aria-label={`Review request from ${request.email}`} onClick={() => setSelectedRequest(request)}><MoreHorizontal size={17} /></button></td></tr>)}</tbody></table> : <div className="empty-module compact"><div className="admin-stat-icon blue"><ClipboardList size={22}/></div><h2>No requests yet</h2><p>New service enquiries will appear here after they are submitted.</p></div>}</div></section>
     {selectedRequest && <div className="request-review-backdrop" role="presentation" onClick={() => setSelectedRequest(null)}><section className="request-review" role="dialog" aria-modal="true" aria-labelledby="request-review-title" onClick={(event) => event.stopPropagation()}><div className="request-review-header"><div><p className="admin-overline">SERVICE INTAKE</p><h2 id="request-review-title">Review enquiry</h2></div><button className="admin-icon-button" aria-label="Close request review" onClick={() => setSelectedRequest(null)}><X size={18} /></button></div><dl className="request-review-details"><div><dt>Requested service</dt><dd>{selectedRequest.service}</dd></div><div><dt>Contact email</dt><dd><a href={`mailto:${selectedRequest.email}`}>{selectedRequest.email}</a></dd></div><div><dt>Received</dt><dd>{new Date(selectedRequest.created_at).toLocaleString('en-CA', { dateStyle: 'medium', timeStyle: 'short' })}</dd></div><div><dt>Additional details</dt><dd>{selectedRequest.details || 'The requester did not include additional details.'}</dd></div></dl><div className="request-review-actions"><button className="admin-secondary" onClick={() => setSelectedRequest(null)}>Close</button><a className="admin-primary" href={`mailto:${selectedRequest.email}?subject=${encodeURIComponent(`Lifeline enquiry: ${selectedRequest.service}`)}`}><MessageSquare size={16} />Reply by email</a></div></section></div>}
   </>
   if (active === 'Workforce map' || active === 'Attendance & check-ins') return <>
@@ -117,7 +141,7 @@ export default function AdminPage() {
       <main className="admin-main">
         <header className="admin-header"><button className="admin-menu" onClick={() => setMenuOpen(true)} aria-label="Open admin menu"><Menu size={21} /></button><div className="admin-breadcrumb"><span>Workspace</span><b>/</b><strong>{active}</strong></div><div className="admin-header-actions"><div className="admin-search"><Search size={16} /><input aria-label="Search workspace" placeholder="Search anything..." /></div><button className="admin-icon-button admin-notification" aria-label="Notifications"><Bell size={18} /><i /></button><div className="admin-header-user"><span className="admin-user-avatar">AD</span><span><b>Admin</b><small>Super administrator</small></span><ChevronDown size={15} /></div></div></header>
         <div className="admin-content">
-          {active !== 'Overview' ? <ModuleView active={active} choose={choose} serviceRequests={serviceRequests} /> : <>
+          {active !== 'Overview' ? <ModuleView active={active} choose={choose} serviceRequests={serviceRequests} setServiceRequests={setServiceRequests} /> : <>
           <div className="admin-page-heading"><div><p className="admin-overline">MONDAY, SEPTEMBER 29, 2026 <span className="live-pill">● LIVE</span></p><h1>Good morning, Admin.</h1><p>Here&apos;s what&apos;s happening across Lifeline today.</p></div><button className="admin-primary"><ClipboardList size={17} />New service request</button></div>
           <div className="admin-alert"><div><AlertTriangle size={17} /><b>3 items need your attention</b><span>2 documents expire this week and 1 shift is unassigned.</span></div><button>Review now →</button></div>
           <section className="admin-stat-grid" aria-label="Executive overview"><article><div className="admin-stat-icon blue"><ClipboardList size={20} /></div><span>Open requests</span><strong>24</strong><small className="positive">+8.2% <b>vs last month</b></small></article><article><div className="admin-stat-icon green"><Users size={20} /></div><span>Active clients</span><strong>186</strong><small className="positive">+12 <b>this month</b></small></article><article><div className="admin-stat-icon gold"><CalendarDays size={20} /></div><span>Scheduled today</span><strong>38</strong><small className="neutral">6 <b>need attention</b></small></article><article><div className="admin-stat-icon purple"><WalletCards size={20} /></div><span>Revenue this month</span><strong>$86.5k</strong><small className="positive">+14.6% <b>vs last month</b></small></article></section>
