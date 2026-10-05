@@ -2,10 +2,15 @@
 
 import { useEffect, useState } from 'react'
 import { ArrowRight, ChevronDown, CircleCheck, HeartHandshake, Home, Menu, Pause, Play, Sparkles, Users, X, BriefcaseBusiness, Building2, HandHeart, ClipboardList, Phone, Mail, MapPin, Stethoscope } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { ServiceIntakeForm } from '@/components/service-intake-form'
 
+type Service = [string, string, LucideIcon]
+type HeroPanel = [string, string, string, string]
+type Organization = [string, string, LucideIcon]
+
 const nav = ['About', 'Services', 'Careers', 'Government & Non-profit']
-const services = [
+const services: Service[] = [
   ['Healthcare Services', 'Practical, respectful care and everyday support that promotes dignity, safety and independence.', HeartHandshake],
   ['Residential Housekeeping', 'Reliable cleaning, laundry and home assistance that helps people feel comfortable where they live.', Home],
   ['Commercial Housekeeping', 'Professional cleaning solutions for workplaces, facilities and organisations across Canada.', Sparkles],
@@ -20,7 +25,8 @@ const services = [
   ['Facility & Workforce Support', 'Dependable people and coordinated services for care environments and community organisations.', Building2],
 ]
 const steps = [['01', 'Tell Us What You Need', 'Submit a service request or contact our team.'], ['02', 'We Understand Your Needs', 'We review the request and determine the right approach.'], ['03', 'We Coordinate Support', 'We organise the right people, schedule and resources.'], ['04', 'Support Begins', 'Receive dependable service with ongoing communication.']]
-const heroPanels = [
+const organizations: Organization[] = [['Facilities','Staffing and support for care and residential environments.',Building2],['Businesses','Professional commercial and workplace services.',BriefcaseBusiness],['Government','Community programmes and contracted support.',ClipboardList],['Nonprofits & Community','Practical services that strengthen community initiatives.',Users]]
+const heroPanels: HeroPanel[] = [
   ['care', '/lifeline-care.png', 'Care & support', 'Caregiver supporting an older adult'],
   ['home', '/lifeline-home.png', 'Home services', 'Home support in a bright living space'],
   ['cleaning', '/lifeline-cleaning.png', 'Professional cleaning', 'Cleaner working in a commercial environment'],
@@ -62,7 +68,7 @@ export default function Page() {
 
     <section className="care-feature container" id="about"><div className="care-image"><img src="/lifeline-home.png" alt="Home support worker assisting a woman in a bright living room" /><div className="round-badge">CARE<br />WITH<br /><span>respect</span></div></div><div className="care-copy"><p className="eyebrow">PERSON-CENTRED CARE</p><h2>Support that respects <em>the individual.</em></h2><p>Every person has different routines, preferences and needs. Lifeline focuses on practical, respectful support that helps people remain comfortable, connected and as independent as possible.</p><ul>{['Personalised support', 'Dignity and respect', 'Family-focused communication', 'Flexible care options'].map(x => <li key={x}><CircleCheck size={19} />{x}</li>)}</ul><a className="text-link" href="#services">Learn about our care services <ArrowRight size={16} /></a></div></section>
 
-    <section className="org-section" id="government-&-nonprofit"><div className="container"><div className="org-heading"><div><p className="eyebrow eyebrow-light">FOR ORGANISATIONS</p><h2>More than<br /><em>home care.</em></h2></div><p>Lifeline also works with organizations that need dependable people, cleaning services, community support and flexible workforce solutions across Canada.</p></div><div className="org-grid">{[['Facilities','Staffing and support for care and residential environments.',Building2],['Businesses','Professional commercial and workplace services.',BriefcaseBusiness],['Government','Community programmes and contracted support.',ClipboardList],['Nonprofits & Community','Practical services that strengthen community initiatives.',Users]].map(([t,d,I]) => <a className="org-card" href="#contact" key={t}><I /><span><b>{t}</b><small>{d}</small></span><ArrowRight /></a>)}</div><Button light href="#contact">Government & Non-profit Services</Button></div></section>
+    <section className="org-section" id="government-&-nonprofit"><div className="container"><div className="org-heading"><div><p className="eyebrow eyebrow-light">FOR ORGANISATIONS</p><h2>More than<br /><em>home care.</em></h2></div><p>Lifeline also works with organizations that need dependable people, cleaning services, community support and flexible workforce solutions across Canada.</p></div><div className="org-grid">{organizations.map(([t,d,I]) => <a className="org-card" href="#contact" key={t}><I /><span><b>{t}</b><small>{d}</small></span><ArrowRight /></a>)}</div><Button light href="#contact">Government & Non-profit Services</Button></div></section>
 
     <section className="why-section" id="cooperative"><div className="container"><div className="section-heading"><div><p className="eyebrow">THE LIFELINE DIFFERENCE</p><h2>Why families and<br /><em>organisations choose us.</em></h2></div></div><div className="why-grid">{[['01','People First','Services designed around people, not just processes.'],['02','Flexible Support','Services that adapt to changing needs and circumstances.'],['03','Professional Approach','Structured service delivery with clear communication and accountability.'],['04','Community Focus','Practical support that helps people, families and communities thrive.']].map(([n,t,d]) => <div className="why-item" key={n}><span>{n}</span><h3>{t}</h3><p>{d}</p></div>)}</div></div></section>
 
