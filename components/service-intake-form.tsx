@@ -11,14 +11,15 @@ export function ServiceIntakeForm() {
     event.preventDefault()
     setState('submitting')
     setMessage('')
-    const form = new FormData(event.currentTarget)
+    const formElement = event.currentTarget
+    const form = new FormData(formElement)
     try {
       const response = await fetch('/api/service-requests', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ service: form.get('service'), email: form.get('email'), details: form.get('details') }) })
       const result = await response.json()
       if (!response.ok) throw new Error(result.error)
       setState('success')
       setMessage('Thanks — a member of the Lifeline team will be in touch soon.')
-      event.currentTarget.reset()
+      formElement.reset()
     } catch (error) {
       setState('error')
       setMessage(error instanceof Error ? error.message : 'Please try again.')
