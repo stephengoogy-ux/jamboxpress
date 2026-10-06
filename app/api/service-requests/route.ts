@@ -14,7 +14,7 @@ const allowedStatuses = new Set(['new', 'in_review', 'scheduled', 'closed'])
 export async function GET() {
   try {
     const result = await db.execute(sql`
-      SELECT id, service, email, details, created_at
+      SELECT id, service, email, details, status, created_at
       FROM service_requests
       ORDER BY created_at DESC
       LIMIT 100
