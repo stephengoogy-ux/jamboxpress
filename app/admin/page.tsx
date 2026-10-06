@@ -116,8 +116,17 @@ export default function AdminPage() {
   const [expanded, setExpanded] = useState(false)
   const [serviceRequests, setServiceRequests] = useState<ServiceRequest[]>([])
   const [newRequestOpen, setNewRequestOpen] = useState(false)
+  const [notificationsOpen, setNotificationsOpen] = useState(false)
+  const [notifications, setNotifications] = useState([
+    { id: 'documents', title: '2 documents expire this week', detail: 'Review expiring client documents.', unread: true },
+    { id: 'shift', title: 'Unassigned shift needs cover', detail: 'A Victoria shift is waiting for a team member.', unread: true },
+    { id: 'request', title: 'New service request received', detail: 'A new enquiry is ready for review.', unread: false },
+  ])
 
   const openNewRequest = () => setNewRequestOpen(true)
+  const unreadNotifications = notifications.filter((notification) => notification.unread).length
+  const markNotificationsRead = () => setNotifications((items) => items.map((notification) => ({ ...notification, unread: false })))
+  const toggleNotifications = () => setNotificationsOpen((open) => !open)
 
   const choose = async (label: string) => {
     setActive(label)
@@ -151,7 +160,7 @@ export default function AdminPage() {
       </aside>
 
       <main className="admin-main">
-        <header className="admin-header"><button className="admin-menu" onClick={() => setMenuOpen(true)} aria-label="Open admin menu"><Menu size={21} /></button><div className="admin-breadcrumb"><span>Workspace</span><b>/</b><strong>{active}</strong></div><div className="admin-header-actions"><div className="admin-search"><Search size={16} /><input aria-label="Search workspace" placeholder="Search anything..." /></div><button className="admin-icon-button admin-notification" aria-label="Notifications"><Bell size={18} /><i /></button><div className="admin-header-user"><span className="admin-user-avatar">AD</span><span><b>Admin</b><small>Super administrator</small></span><ChevronDown size={15} /></div></div></header>
+        <header className="admin-header"><button className="admin-menu" onClick={() => setMenuOpen(true)} aria-label="Open admin menu"><Menu size={21} /></button><div className="admin-breadcrumb"><span>Workspace</span><b>/</b><strong>{active}</strong></div><div className="admin-header-actions"><div className="admin-search"><Search size={16} /><input aria-label="Search workspace" placeholder="Search anything..." /></div><div className="notification-menu"><button className="admin-icon-button admin-notification" aria-label="Notifications" aria-expanded={notificationsOpen} onClick={toggleNotifications}><Bell size={18} />{unreadNotifications > 0 && <i />}</button>{notificationsOpen && <div className="notification-popover" role="dialog" aria-label="Notifications"><div className="notification-popover-header"><div><b>Notifications</b><small>{unreadNotifications ? `${unreadNotifications} unread` : 'All caught up'}</small></div><button className="admin-link-button" onClick={markNotificationsRead} disabled={!unreadNotifications}>Mark all read</button></div><div className="notification-list">{notifications.map((notification) => <button className={`notification-item ${notification.unread ? 'is-unread' : ''}`} key={notification.id} onClick={() => setNotifications((items) => items.map((item) => item.id === notification.id ? { ...item, unread: false } : item))}><span className="notification-dot" /><span><b>{notification.title}</b><small>{notification.detail}</small></span></button>)}</div></div>}</div><div className="admin-header-user"><span className="admin-user-avatar">AD</span><span><b>Admin</b><small>Super administrator</small></span><ChevronDown size={15} /></div></div></header>
         <div className="admin-content">
           {active !== 'Overview' ? <ModuleView active={active} choose={choose} serviceRequests={serviceRequests} setServiceRequests={setServiceRequests} openNewRequest={openNewRequest} /> : <>
           <div className="admin-page-heading"><div><p className="admin-overline">MONDAY, SEPTEMBER 29, 2026 <span className="live-pill">● LIVE</span></p><h1>Good morning, Admin.</h1><p>Here&apos;s what&apos;s happening across Lifeline today.</p></div><button className="admin-primary" onClick={openNewRequest}><ClipboardList size={17} />New service request</button></div>
