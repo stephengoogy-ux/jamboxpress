@@ -60,7 +60,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="site-header__actions">
-          <Link className="site-header__contact" href="/contact">Talk to our team</Link>
           <Link className="site-button site-button--header" href="/contact">
             Request support <ArrowRight size={16} aria-hidden="true" />
           </Link>

@@ -105,7 +105,7 @@ export function ServiceCard({ service }: { service: ServiceItem }) {
       <span className="marketing-service-card__category">{service.category}</span>
       <h3>{service.title}</h3>
       <p>{service.description}</p>
-      <span className="marketing-service-card__link">            Ask about this service <ArrowRight size={15} aria-hidden="true" /></span>
+      <span className="marketing-service-card__link">Ask about this service <ArrowRight size={15} aria-hidden="true" /></span>
     </Link>
   )
 }
