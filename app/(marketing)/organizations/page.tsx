@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function OrganizationsPage() {
   return (
-    <main className="marketing-main">
+    <main id="main-content" className="marketing-main" tabIndex={-1}>
       <PageHero
         eyebrow="FOR ORGANIZATIONS"
         title={<>Dependable support for <em>the work you do.</em></>}

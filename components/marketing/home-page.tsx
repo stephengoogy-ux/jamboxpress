@@ -30,7 +30,7 @@ const supportAreas = [
 
 export function HomePage() {
   return (
-    <main className="marketing-main">
+    <main id="main-content" className="marketing-main" tabIndex={-1}>
       <section className="home-hero" aria-labelledby="home-hero-title">
         <div className="site-container home-hero__grid">
           <div className="home-hero__copy">

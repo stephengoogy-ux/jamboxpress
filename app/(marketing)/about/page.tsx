@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="marketing-main">
+    <main id="main-content" className="marketing-main" tabIndex={-1}>
       <PageHero
         eyebrow="ABOUT LIFELINE"
         title={<>Care that sees the <em>whole person.</em></>}

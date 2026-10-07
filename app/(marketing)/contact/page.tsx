@@ -62,7 +62,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
   const primarySubject = selectedService ? `Service enquiry: ${selectedService.title}` : 'Lifeline enquiry'
 
   return (
-    <main className="marketing-main">
+    <main id="main-content" className="marketing-main" tabIndex={-1}>
       <section className="contact-hero" aria-labelledby="contact-title">
         <div className="site-container contact-hero__inner">
           <Eyebrow>START WITH A CONVERSATION</Eyebrow>

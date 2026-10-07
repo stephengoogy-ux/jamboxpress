@@ -36,7 +36,7 @@ const serviceGroups = [
 
 export default function ServicesPage() {
   return (
-    <main className="marketing-main">
+    <main id="main-content" className="marketing-main" tabIndex={-1}>
       <PageHero
         eyebrow="OUR SERVICES"
         title={<>One team for care, home <em>&amp; community.</em></>}

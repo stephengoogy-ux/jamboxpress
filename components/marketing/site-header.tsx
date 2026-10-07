@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ArrowRight, HeartHandshake, Menu, X } from 'lucide-react'
@@ -20,9 +20,20 @@ function isCurrentPage(pathname: string, href: string) {
 export function SiteHeader() {
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuToggleRef = useRef<HTMLButtonElement>(null)
 
   return (
-    <header className="site-header">
+    <>
+      <a className="site-skip-link" href="#main-content">Skip to main content</a>
+      <header
+        className="site-header"
+        onKeyDown={(event) => {
+          if (event.key !== 'Escape' || !isMenuOpen) return
+          event.preventDefault()
+          setIsMenuOpen(false)
+          menuToggleRef.current?.focus()
+        }}
+      >
       <div className="site-container site-header__inner">
         <Link className="site-brand" href="/" aria-label="Lifeline home">
           <span className="site-brand__mark" aria-hidden="true"><HeartHandshake size={22} strokeWidth={1.7} /></span>
@@ -56,6 +67,7 @@ export function SiteHeader() {
         </div>
 
         <button
+          ref={menuToggleRef}
           className="site-menu-toggle"
           type="button"
           aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -63,18 +75,11 @@ export function SiteHeader() {
           aria-controls="mobile-navigation"
           onClick={() => setIsMenuOpen((open) => !open)}
         >
-          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          {isMenuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </button>
       </div>
 
-      <div
-        className="site-mobile-panel"
-        id="mobile-navigation"
-        hidden={!isMenuOpen}
-        onKeyDown={(event) => {
-          if (event.key === 'Escape') setIsMenuOpen(false)
-        }}
-      >
+      <div className="site-mobile-panel" id="mobile-navigation" hidden={!isMenuOpen}>
         <nav className="site-mobile-nav" aria-label="Mobile navigation">
           {navigation.map(({ label, href }) => {
             const active = isCurrentPage(pathname, href)
@@ -95,6 +100,7 @@ export function SiteHeader() {
           </Link>
         </nav>
       </div>
-    </header>
+      </header>
+    </>
   )
 }

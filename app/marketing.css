@@ -32,6 +32,26 @@
   backdrop-filter: blur(16px);
 }
 
+.site-skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 12px 16px;
+  border: 1px solid var(--site-blue-bright);
+  background: var(--site-navy);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(calc(-100% - 24px));
+  transition: transform 180ms ease;
+}
+
+.site-skip-link:focus {
+  transform: translateY(0);
+}
+
 .site-header__inner {
   height: 82px;
   display: grid;
@@ -228,6 +248,7 @@
 .marketing-main {
   overflow: hidden;
   background: #fff;
+  scroll-margin-top: 96px;
 }
 
 .marketing-eyebrow {
@@ -1650,16 +1671,7 @@
   color: var(--site-blue);
 }
 
-.site-brand:focus-visible,
-.site-button:focus-visible,
-.site-nav__link:focus-visible,
-.marketing-text-link:focus-visible,
-.marketing-service-card:focus-visible,
-  .site-footer a:focus-visible,
-  .audience-card:focus-visible,
-  .service-category-nav a:focus-visible,
-  .contact-option-card a:focus-visible,
-  .contact-guidance a:focus-visible {
+.marketing-site :focus-visible {
   outline: 3px solid #76b6d8;
   outline-offset: 4px;
 }
