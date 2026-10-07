@@ -1,10 +1,14 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import './marketing.css'
 
 export const metadata: Metadata = {
-  title: 'Lifeline Community Care & Home Services Cooperative',
-  description: 'Compassionate care, reliable home support, staffing and community services built around people and stronger communities.',
+  title: {
+    default: 'Lifeline Community Care & Home Services',
+    template: '%s | Lifeline',
+  },
+  description: 'Thoughtful care at home, dependable housekeeping and community services, brought together around the people who matter.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -26,11 +30,8 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+  colorScheme: 'light',
+  themeColor: '#12395a',
 }
 
 export default function RootLayout({
@@ -39,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body className="antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
