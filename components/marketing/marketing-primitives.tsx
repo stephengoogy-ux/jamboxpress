@@ -97,7 +97,7 @@ export function ServiceCard({ service }: { service: ServiceItem }) {
   const Icon = service.icon
 
   return (
-    <Link className="marketing-service-card" href="/contact">
+    <Link className="marketing-service-card" href={`/contact?service=${encodeURIComponent(service.title)}`}>
       <div className="marketing-service-card__top">
         <span className="marketing-service-card__icon"><Icon size={22} strokeWidth={1.8} aria-hidden="true" /></span>
         <span className="marketing-service-card__number">{service.number}</span>
@@ -105,7 +105,7 @@ export function ServiceCard({ service }: { service: ServiceItem }) {
       <span className="marketing-service-card__category">{service.category}</span>
       <h3>{service.title}</h3>
       <p>{service.description}</p>
-      <span className="marketing-service-card__link">Discuss this service <ArrowRight size={15} aria-hidden="true" /></span>
+      <span className="marketing-service-card__link">            Ask about this service <ArrowRight size={15} aria-hidden="true" /></span>
     </Link>
   )
 }
