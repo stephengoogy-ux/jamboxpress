@@ -1,8 +1,8 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, Check, HeartHandshake } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { featuredServices, serviceSteps } from './content'
-import { ContactCallout, Eyebrow, PrimaryLink, SectionHeading, ServiceCard, TextLink } from './marketing-primitives'
+import { HomeHero } from './home-hero'
+import { ContactCallout, Eyebrow, PrimaryLink, SectionHeading, ServiceCard } from './marketing-primitives'
 
 const supportAreas = [
   {
@@ -31,41 +31,7 @@ const supportAreas = [
 export function HomePage() {
   return (
     <main id="main-content" className="marketing-main" tabIndex={-1}>
-      <section className="home-hero" aria-labelledby="home-hero-title">
-        <div className="site-container home-hero__grid">
-          <div className="home-hero__copy">
-            <Eyebrow>Care, home support &amp; community services</Eyebrow>
-            <h1 id="home-hero-title">Support for real life.<br /><em>In every space.</em></h1>
-            <p className="home-hero__lead">Thoughtful care at home, dependable housekeeping and community services, brought together around the people who matter.</p>
-            <div className="home-hero__actions">
-              <PrimaryLink href="/services#care-support">Care for me or my family</PrimaryLink>
-              <TextLink href="/organizations">I&apos;m looking for organization services</TextLink>
-            </div>
-            <div className="home-hero__proof" aria-label="Lifeline service principles">
-              <span><Check size={15} aria-hidden="true" /> Person-centred</span>
-              <span><Check size={15} aria-hidden="true" /> Dependable</span>
-              <span><Check size={15} aria-hidden="true" /> Community-minded</span>
-            </div>
-          </div>
-
-          <div className="home-hero__visual">
-            <div className="home-hero__image-frame">
-              <Image
-                src="/lifeline-editorial-home.png"
-                alt="An older adult and her home-care worker sharing tea and conversation at home"
-                fill
-                priority
-                sizes="(max-width: 850px) 100vw, 54vw"
-              />
-              <div className="home-hero__image-label"><span>Support that feels personal</span><span>Care at every stage</span></div>
-            </div>
-            <div className="home-hero__floating-card">
-              <span className="home-hero__floating-icon"><HeartHandshake size={22} aria-hidden="true" /></span>
-              <span><small>OUR APPROACH</small><strong>Respectful, reliable, human.</strong></span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HomeHero />
 
       <section className="home-credibility" aria-label="Lifeline at a glance">
         <div className="site-container">
