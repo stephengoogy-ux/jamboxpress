@@ -67,6 +67,25 @@ export function HomePage() {
         </div>
       </section>
 
+      <section className="home-credibility" aria-label="Lifeline at a glance">
+        <div className="site-container">
+          <dl className="home-credibility__grid">
+            <div className="home-credibility__item">
+              <dt>ORGANIZATION</dt>
+              <dd>A community care co-operative</dd>
+            </div>
+            <div className="home-credibility__item">
+              <dt>SERVICES</dt>
+              <dd>Care, home services &amp; community support</dd>
+            </div>
+            <div className="home-credibility__item">
+              <dt>SERVICE AREA</dt>
+              <dd>Victoria, Vancouver Island and communities across Canada</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
       <section className="marketing-section audience-section" id="support-paths" aria-labelledby="audience-title">
         <div className="site-container">
           <SectionHeading
