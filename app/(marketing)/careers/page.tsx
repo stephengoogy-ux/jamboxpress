@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { careerAreas } from '@/components/marketing/content'
+import { careerAreas, editorialPhotos } from '@/components/marketing/content'
 import { ContactCallout, InfoCard, PageHero, SectionHeading, TextLink } from '@/components/marketing/marketing-primitives'
 
 export const metadata: Metadata = {
@@ -14,7 +14,9 @@ export default function CareersPage() {
         eyebrow="WORK WITH PURPOSE"
         title={<>Make a difference in <em>everyday life.</em></>}
         description="Explore work across care, home services and community support. Specific roles, requirements and availability can vary; start a conversation to learn what may fit your experience and interests."
-        image={{ src: '/lifeline-editorial-careers.png', alt: 'Care and community-support professionals in a shift handover conversation' }}
+        image={editorialPhotos.careers}
+        primaryHref="/contact?audience=careers"
+        primaryAction="Ask about careers"
       />
 
       <section className="marketing-section career-section" aria-label="Career areas at Lifeline">
@@ -37,15 +39,16 @@ export default function CareersPage() {
             <h2>Let&apos;s start with <em>a conversation.</em></h2>
             <p>Roles, requirements and availability vary. When you write, tell us which area interests you, any relevant experience or training, and location or schedule considerations. Our team can share the appropriate next step and any role-specific details.</p>
           </div>
-          <TextLink href="mailto:hello@lifelinecooperative.org?subject=Career%20opportunities">Email us about careers</TextLink>
+          <TextLink href="/contact?audience=careers">Open a career email draft</TextLink>
         </div>
       </section>
 
       <ContactCallout
         eyebrow="MAKE AN IMPACT WITH LIFELINE"
         title={<>Good work can make <em>everyday life better.</em></>}
-        description="Reach out to learn more about opportunities across care, home services and community support."
-        action="Get in touch"
+        description="Tell us which area interests you and the email draft will start with a careers subject line. Add only the details you are comfortable sharing."
+        action="Ask about opportunities"
+        actionHref="/contact?audience=careers"
       />
     </main>
   )

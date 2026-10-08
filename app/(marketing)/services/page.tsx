@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { commitments, serviceItems, serviceSteps } from '@/components/marketing/content'
+import { commitments, editorialPhotos, serviceItems, serviceSteps } from '@/components/marketing/content'
 import { ContactCallout, Eyebrow, PageHero, PrimaryLink, SectionHeading, ServiceCard } from '@/components/marketing/marketing-primitives'
 
 export const metadata: Metadata = {
@@ -41,7 +41,8 @@ export default function ServicesPage() {
         eyebrow="OUR SERVICES"
         title={<>One team for care, home <em>&amp; community.</em></>}
         description="Explore practical, respectful support for people and families, plus dependable services for workplaces, facilities and community organizations."
-        image={{ src: '/lifeline-editorial-services.png', alt: 'A housekeeping professional preparing a sunlit community workspace' }}
+        image={editorialPhotos.services}
+        primaryAction="Ask about services"
         secondaryHref="#service-list"
         secondaryLabel="Browse by service"
       />

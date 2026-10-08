@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { commitments, serviceSteps } from '@/components/marketing/content'
+import { commitments, editorialPhotos, serviceSteps } from '@/components/marketing/content'
 import { ContactCallout, Eyebrow, InfoCard, PageHero, SectionHeading } from '@/components/marketing/marketing-primitives'
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export default function AboutPage() {
         eyebrow="ABOUT LIFELINE"
         title={<>Care that sees the <em>whole person.</em></>}
         description="We bring care, home services and community support together with one purpose: helping people feel respected, supported and connected in everyday life."
-        image={{ src: '/lifeline-editorial-about.png', alt: 'Neighbors of different generations sharing a conversation around a table' }}
+        image={editorialPhotos.about}
       />
 
       <section className="about-intro">

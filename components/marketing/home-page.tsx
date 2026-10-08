@@ -110,8 +110,11 @@ export function HomePage() {
       <ContactCallout
         eyebrow="LET’S FIND THE RIGHT NEXT STEP"
         title={<>Here to help, wherever <em>life happens.</em></>}
-        description="Whether you are looking for care at home, reliable services for an organization or a community partnership, our team is ready to listen."
-        action="Talk to our team"
+        description="Choose the path that fits. Each option opens a prepared email draft to Lifeline; review it and send only when you are ready."
+        action="For families and individuals"
+        actionHref="/contact?audience=family"
+        secondaryAction="For organizations"
+        secondaryHref="/contact?audience=organization"
       />
     </main>
   )

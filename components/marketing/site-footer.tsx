@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { HeartHandshake, Mail, MapPin } from 'lucide-react'
+import { Activity, Mail, MapPin } from 'lucide-react'
 
 export function SiteFooter() {
   return (
@@ -7,7 +7,7 @@ export function SiteFooter() {
       <div className="site-container site-footer__main">
         <div className="site-footer__brand">
           <Link className="site-brand site-brand--footer" href="/" aria-label="Lifeline home">
-            <span className="site-brand__mark" aria-hidden="true"><HeartHandshake size={22} strokeWidth={1.7} /></span>
+            <span className="site-brand__mark" aria-hidden="true"><Activity size={22} strokeWidth={1.7} /></span>
             <span className="site-brand__copy">
               <strong>Lifeline</strong>
               <small>COMMUNITY CARE &amp; HOME SERVICES</small>
@@ -28,8 +28,9 @@ export function SiteFooter() {
 
         <div className="site-footer__column">
           <h2>Get started</h2>
-          <Link href="/contact">Request support</Link>
-          <Link href="/contact">Request a quote</Link>
+          <Link href="/contact?audience=family">Care and home support</Link>
+          <Link href="/contact?audience=organization">Organization enquiries</Link>
+          <Link href="/contact?audience=careers">Careers and opportunities</Link>
           <a href="mailto:hello@lifelinecooperative.org">Email our team</a>
         </div>
       </div>

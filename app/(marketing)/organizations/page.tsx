@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { organizationTypes } from '@/components/marketing/content'
+import { editorialPhotos, organizationTypes } from '@/components/marketing/content'
 import { ContactCallout, Eyebrow, InfoCard, PageHero, SectionHeading } from '@/components/marketing/marketing-primitives'
 
 export const metadata: Metadata = {
@@ -32,7 +32,9 @@ export default function OrganizationsPage() {
         eyebrow="FOR ORGANIZATIONS"
         title={<>Dependable support for <em>the work you do.</em></>}
         description="Lifeline partners with government, non-profits, facilities and businesses to coordinate dependable people, cleaning services and community support."
-        image={{ src: '/lifeline-editorial-partners.png', alt: 'Two community-service partners discussing a plan in a bright workspace' }}
+        image={editorialPhotos.organizations}
+        primaryHref="/contact?audience=organization"
+        primaryAction="Discuss a partnership"
       />
 
       <section className="marketing-section organization-section" aria-label="Organization services">
@@ -79,8 +81,9 @@ export default function OrganizationsPage() {
       <ContactCallout
         eyebrow="LET’S BUILD A PARTNERSHIP"
         title={<>Tell us what your organization <em>needs to accomplish.</em></>}
-        description="Start a conversation about service delivery, staffing, cleaning or community program support."
+        description="Start with the setting, the people you serve and the service you are exploring. The next step opens a prepared email draft for you to review."
         action="Discuss a partnership"
+        actionHref="/contact?audience=organization"
       />
     </main>
   )

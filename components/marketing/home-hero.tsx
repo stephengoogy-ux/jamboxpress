@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowDown, ArrowRight, Pause, Play } from 'lucide-react'
 import { useEffect, useState, type KeyboardEvent } from 'react'
+import { editorialPhotos } from './content'
 
 const slideDuration = 7500
 
@@ -17,7 +18,7 @@ const slides = [
     description: 'Thoughtful care and practical help, shaped around the people and routines that matter.',
     action: 'Explore home support',
     href: '/services#care-support',
-    image: '/lifeline-care.png',
+    image: editorialPhotos.home,
   },
   {
     number: '02',
@@ -28,7 +29,7 @@ const slides = [
     description: 'Reliable housekeeping and everyday home services to make daily life feel more manageable.',
     action: 'Explore home services',
     href: '/services#home-support',
-    image: '/lifeline-cleaning.png',
+    image: editorialPhotos.services,
   },
   {
     number: '03',
@@ -39,7 +40,7 @@ const slides = [
     description: 'Practical community programs and support that help people feel connected and included.',
     action: 'Explore community services',
     href: '/services#organization-support',
-    image: '/lifeline-community.png',
+    image: editorialPhotos.about,
   },
   {
     number: '04',
@@ -50,7 +51,7 @@ const slides = [
     description: 'Flexible staffing and contract support for facilities, organizations and care environments.',
     action: 'Explore workforce solutions',
     href: '/organizations',
-    image: '/lifeline-team.png',
+    image: editorialPhotos.careers,
   },
   {
     number: '05',
@@ -61,7 +62,7 @@ const slides = [
     description: 'Dependable services for businesses, facilities, non-profits and community organizations across Canada.',
     action: 'Explore partnerships',
     href: '/organizations',
-    image: '/lifeline-editorial-partners.png',
+    image: editorialPhotos.organizations,
   },
 ] as const
 
@@ -127,9 +128,9 @@ export function HomeHero() {
     >
       <div className="home-slider__background" aria-hidden="true">
         <Image
-          key={activeSlide.image}
+          key={activeSlide.image.src}
           className="home-slider__image"
-          src={activeSlide.image}
+          src={activeSlide.image.src}
           alt=""
           fill
           loading="eager"
@@ -161,6 +162,8 @@ export function HomeHero() {
             </Link>
           </div>
         </div>
+
+        <p className="home-slider__image-note">Illustrative photography</p>
 
         <div className="home-slider__controls">
           <div className="home-slider__pagination" role="group" aria-label="Choose a featured service">

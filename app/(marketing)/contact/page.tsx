@@ -12,37 +12,52 @@ const emailAddress = 'hello@lifelinecooperative.org'
 
 const contactOptions = [
   {
+    audience: 'family',
     number: '01',
     title: 'Care and home support',
     description: 'Looking for care, companionship, respite, housekeeping or practical help at home?',
-    subject: 'Care and home support',
+    subject: 'Care and home support enquiry',
+    heroAction: 'Start a care enquiry',
+    cardAction: 'Open care enquiry draft',
+    opening: 'I am looking for care or practical support at home.',
+    prompts: ['City or region:', 'Preferred timing:', 'What would be helpful:', 'Questions I would like to ask:'],
     icon: HandHeart,
   },
   {
+    audience: 'organization',
     number: '02',
     title: 'Organization partnerships',
     description: 'Need staffing, commercial cleaning, facility support or a community program partner?',
-    subject: 'Organization partnership',
+    subject: 'Organization partnership enquiry',
+    heroAction: 'Start a partnership enquiry',
+    cardAction: 'Open partnership draft',
+    opening: 'I am exploring services or a partnership for an organization.',
+    prompts: ['Organization and service setting:', 'City or region:', 'The work or outcome I need support with:', 'Timing or coordination details:'],
     icon: BriefcaseBusiness,
   },
   {
+    audience: 'careers',
     number: '03',
     title: 'Careers and opportunities',
     description: 'Interested in meaningful work across care, home services or community support?',
-    subject: 'Career opportunities',
+    subject: 'Career opportunities enquiry',
+    heroAction: 'Email about careers',
+    cardAction: 'Open careers draft',
+    opening: 'I am interested in career opportunities with Lifeline.',
+    prompts: ['Area of work I am interested in:', 'Relevant experience or training:', 'City or region:', 'Schedule considerations or questions:'],
     icon: Users,
   },
 ]
 
-function createEmailDraft(subject: string, service?: string) {
+const generalPrompts = ['City or region:', 'Preferred timing:', 'What would be helpful:', 'Questions I would like to ask:']
+
+function createEmailDraft(subject: string, opening = 'I am getting in touch about:', prompts = generalPrompts) {
   const body = [
     'Hello Lifeline team,',
     '',
-    service ? `I am interested in ${service}.` : 'I am getting in touch about:',
+    opening,
     '',
-    'Location (city or region):',
-    'Preferred timing:',
-    'A little more about what I need:',
+    ...prompts,
     '',
     'Thank you,',
   ].join('\n')
@@ -59,7 +74,21 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
   const requestedService = params.service
   const selectedServiceTitle = Array.isArray(requestedService) ? requestedService[0] : requestedService
   const selectedService = serviceItems.find((service) => service.title === selectedServiceTitle)
-  const primarySubject = selectedService ? `Service enquiry: ${selectedService.title}` : 'Lifeline enquiry'
+  const requestedAudience = params.audience
+  const selectedAudienceKey = Array.isArray(requestedAudience) ? requestedAudience[0] : requestedAudience
+  const selectedAudience = contactOptions.find((option) => option.audience === selectedAudienceKey)
+  const primarySubject = selectedService
+    ? `Service enquiry: ${selectedService.title}`
+    : selectedAudience?.subject ?? 'Lifeline enquiry'
+  const primaryAction = selectedService
+    ? `Ask about ${selectedService.title}`
+    : selectedAudience?.heroAction ?? 'Email our team'
+  const primaryOpening = selectedService
+    ? `I am interested in ${selectedService.title}.`
+    : selectedAudience?.opening
+  const primaryPrompts = selectedService
+    ? generalPrompts
+    : selectedAudience?.prompts
 
   return (
     <main id="main-content" className="marketing-main" tabIndex={-1}>
@@ -67,13 +96,21 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         <div className="site-container contact-hero__inner">
           <Eyebrow>START WITH A CONVERSATION</Eyebrow>
           <h1 id="contact-title">Let&apos;s make the next step <em>clear.</em></h1>
-          <p className="contact-hero__description">Choose a topic and we&apos;ll open an email draft for you to review. Nothing is sent until you choose Send.</p>
-          <a className="contact-hero__email" href={createEmailDraft(primarySubject, selectedService?.title)}>
-            <span><Mail size={18} aria-hidden="true" />{selectedService ? `Ask about ${selectedService.title}` : 'Email our team'}</span>
+          <p className="contact-hero__description">
+            {selectedAudience ? (
+              <>You chose the <strong>{selectedAudience.title.toLowerCase()}</strong> path. This opens a prepared email to Lifeline with a matching subject line.</>
+            ) : selectedService ? (
+              <>You were looking at <strong>{selectedService.title}</strong>. This opens a prepared email draft with the service name in its subject.</>
+            ) : (
+              <>Choose a topic and we&apos;ll open an email draft for you to review. Nothing is sent until you choose Send.</>
+            )}
+          </p>
+          <a className="contact-hero__email" href={createEmailDraft(primarySubject, primaryOpening, primaryPrompts)}>
+            <span><Mail size={18} aria-hidden="true" />{primaryAction}</span>
             <ArrowRight size={17} aria-hidden="true" />
           </a>
           <p className="contact-hero__email-note">Draft addressed to <a href={`mailto:${emailAddress}`}>{emailAddress}</a>. Your email app sends only after you approve it.</p>
-          {selectedService ? <p className="contact-hero__selected">You were looking at <strong>{selectedService.title}</strong>.</p> : null}
+          {selectedAudience ? <p className="contact-hero__selected">Selected topic: <strong>{selectedAudience.title}</strong></p> : null}
         </div>
       </section>
 
@@ -81,19 +118,24 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         <div className="site-container">
           <div className="contact-options-heading">
             <div><Eyebrow>HOW CAN WE HELP?</Eyebrow><h2 id="contact-options-title">Choose the conversation <em>you need.</em></h2></div>
-            <p>Each option opens a prepared email draft with a clear subject. Review it, add whatever details you are comfortable sharing, and send it when you&apos;re ready.</p>
+            <p>Each option prepares an email to {emailAddress} with a clear subject and useful prompts. Review it, add only what you are comfortable sharing, then send it when you&apos;re ready.</p>
           </div>
           <div className="contact-option-grid">
-            {contactOptions.map(({ number, title, description, subject, icon: Icon }) => (
-              <article className="contact-option-card" key={number}>
-                <div className="contact-option-card__top"><span><Icon size={21} aria-hidden="true" /></span><small>{number}</small></div>
-                <h3>{title}</h3>
-                <p>{description}</p>
-                <a href={createEmailDraft(subject)}>
-                  Open email draft <ArrowRight size={15} aria-hidden="true" />
-                </a>
-              </article>
-            ))}
+            {contactOptions.map(({ audience, number, title, description, subject, opening, prompts, cardAction, icon: Icon }) => {
+              const isSelected = selectedAudience?.audience === audience
+
+              return (
+                <article className="contact-option-card" data-selected={isSelected || undefined} key={number}>
+                  <div className="contact-option-card__top"><span><Icon size={21} aria-hidden="true" /></span><small>{number}</small></div>
+                  {isSelected ? <span className="contact-option-card__selected">Selected from previous page</span> : null}
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                  <a href={createEmailDraft(subject, opening, prompts)}>
+                    {cardAction} <ArrowRight size={15} aria-hidden="true" />
+                  </a>
+                </article>
+              )
+            })}
           </div>
           <div className="contact-bottom-note">
             <span><Mail size={17} aria-hidden="true" /> Prefer to write your own message?</span>

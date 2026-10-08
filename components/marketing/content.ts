@@ -12,6 +12,34 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 
+export const editorialPhotos = {
+  home: {
+    src: '/lifeline-editorial-home.png',
+    alt: 'Two people sharing a conversation over tea at a kitchen table.',
+    label: 'Care at home',
+  },
+  services: {
+    src: '/lifeline-editorial-services.png',
+    alt: 'A person cleaning a wooden table beside large windows.',
+    label: 'Home services',
+  },
+  about: {
+    src: '/lifeline-editorial-about.png',
+    alt: 'A group gathered around a table in conversation.',
+    label: 'Community care',
+  },
+  careers: {
+    src: '/lifeline-editorial-careers.png',
+    alt: 'Three colleagues sharing notes around a table.',
+    label: 'People at work',
+  },
+  organizations: {
+    src: '/lifeline-editorial-partners.png',
+    alt: 'Two people reviewing a floor plan together.',
+    label: 'Partnerships',
+  },
+} as const
+
 export type ServiceItem = {
   number: string
   title: string

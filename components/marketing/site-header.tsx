@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ArrowRight, HeartHandshake, Menu, X } from 'lucide-react'
+import { Activity, ArrowRight, Menu, X } from 'lucide-react'
 
 const navigation = [
   { label: 'Home', href: '/' },
@@ -36,7 +36,7 @@ export function SiteHeader() {
       >
       <div className="site-container site-header__inner">
         <Link className="site-brand" href="/" aria-label="Lifeline home">
-          <span className="site-brand__mark" aria-hidden="true"><HeartHandshake size={22} strokeWidth={1.7} /></span>
+          <span className="site-brand__mark" aria-hidden="true"><Activity size={22} strokeWidth={1.7} /></span>
           <span className="site-brand__copy">
             <strong>Lifeline</strong>
             <small>COMMUNITY CARE &amp; HOME SERVICES</small>
@@ -61,7 +61,7 @@ export function SiteHeader() {
 
         <div className="site-header__actions">
           <Link className="site-button site-button--header" href="/contact">
-            Request support <ArrowRight size={16} aria-hidden="true" />
+            Talk to our team <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </div>
 
@@ -95,7 +95,7 @@ export function SiteHeader() {
             )
           })}
           <Link className="site-button" href="/contact" onClick={() => setIsMenuOpen(false)}>
-            Request support <ArrowRight size={16} aria-hidden="true" />
+            Talk to our team <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </nav>
       </div>

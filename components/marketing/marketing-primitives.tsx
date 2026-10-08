@@ -58,13 +58,17 @@ export function PageHero({
   title,
   description,
   image,
+  primaryHref = '/contact',
+  primaryAction = 'Talk to our team',
   secondaryHref,
   secondaryLabel,
 }: {
   eyebrow: string
   title: ReactNode
   description: string
-  image?: { src: string; alt: string }
+  image?: { src: string; alt: string; label: string }
+  primaryHref?: string
+  primaryAction?: string
   secondaryHref?: string
   secondaryLabel?: string
 }) {
@@ -76,7 +80,7 @@ export function PageHero({
           <h1>{title}</h1>
           <p>{description}</p>
           <div className="page-hero__actions">
-            <PrimaryLink href="/contact">Request support</PrimaryLink>
+            <PrimaryLink href={primaryHref}>{primaryAction}</PrimaryLink>
             {secondaryHref && secondaryLabel ? <TextLink href={secondaryHref}>{secondaryLabel}</TextLink> : null}
           </div>
         </div>
@@ -85,7 +89,7 @@ export function PageHero({
             <div className="page-hero__image">
               <Image src={image.src} alt={image.alt} fill priority sizes="(max-width: 820px) 100vw, 48vw" />
             </div>
-            <div className="page-hero__image-caption"><span>Care with respect</span><span>People first, always</span></div>
+            <div className="page-hero__image-caption"><span>Illustrative photography</span><span>{image.label}</span></div>
           </div>
         ) : null}
       </div>
@@ -138,11 +142,17 @@ export function ContactCallout({
   title,
   description,
   action = 'Talk to our team',
+  actionHref = '/contact',
+  secondaryAction,
+  secondaryHref,
 }: {
   eyebrow?: string
   title: ReactNode
   description: string
   action?: string
+  actionHref?: string
+  secondaryAction?: string
+  secondaryHref?: string
 }) {
   return (
     <section className="contact-callout" aria-labelledby="contact-callout-title">
@@ -152,7 +162,12 @@ export function ContactCallout({
           <h2 id="contact-callout-title">{title}</h2>
           <p>{description}</p>
         </div>
-        <PrimaryLink href="/contact" className="site-button--light">{action}</PrimaryLink>
+        <div className="contact-callout__actions">
+          <PrimaryLink href={actionHref} className="site-button--light">{action}</PrimaryLink>
+          {secondaryAction && secondaryHref ? (
+            <PrimaryLink href={secondaryHref} className="site-button--light-outline">{secondaryAction}</PrimaryLink>
+          ) : null}
+        </div>
       </div>
     </section>
   )
