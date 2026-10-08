@@ -140,22 +140,22 @@ export const serviceSteps = [
   {
     number: '01',
     title: 'Tell us what you need',
-    description: 'Share a little about the support or service you are looking for.',
+    description: 'Share who the support is for, what would help and any practical details you already know. You do not need to know the service name.',
   },
   {
     number: '02',
     title: 'We understand your needs',
-    description: 'Our team reviews the request and learns what matters most.',
+    description: 'We learn about routines, setting, timing and existing supports so we can understand the request in context.',
   },
   {
     number: '03',
     title: 'We coordinate support',
-    description: 'We work out the right people, schedule and resources for the request.',
+    description: 'Together, we clarify the service, scope, schedule and practical details before support begins.',
   },
   {
     number: '04',
     title: 'Support begins',
-    description: 'Service starts with clear communication and room to adjust as needs evolve.',
+    description: 'Service starts with clear communication, with room to discuss changes as needs evolve.',
   },
 ]
 
@@ -163,25 +163,25 @@ export const organizationTypes = [
   {
     number: '01',
     title: 'Facilities',
-    description: 'Staffing and support for care and residential environments.',
+    description: 'Housekeeping and workforce support for care, residential and shared-use spaces.',
     icon: Building2,
   },
   {
     number: '02',
     title: 'Businesses',
-    description: 'Professional commercial and workplace services.',
+    description: 'Commercial cleaning and workplace services to support day-to-day operations.',
     icon: BriefcaseBusiness,
   },
   {
     number: '03',
     title: 'Government',
-    description: 'Community programs and contracted support.',
+    description: 'Contracted services and community program support for public initiatives.',
     icon: ClipboardList,
   },
   {
     number: '04',
     title: 'Non-profits and community',
-    description: 'Practical services that strengthen community initiatives.',
+    description: 'Practical support that helps community teams deliver local programs and services.',
     icon: Users,
   },
 ]
@@ -190,25 +190,25 @@ export const careerAreas = [
   {
     number: '01',
     title: 'Care and home support',
-    description: 'Help people with personal care, daily routines and greater confidence at home.',
+    description: 'Explore work supporting daily routines with respectful personal care, companionship and practical help at home.',
     icon: HandHeart,
   },
   {
     number: '02',
     title: 'Housekeeping and cleaning',
-    description: 'Make living, working and shared spaces feel cared for and ready for everyday life.',
+    description: 'Help care for living, working and shared spaces through housekeeping and cleaning services.',
     icon: Sparkles,
   },
   {
     number: '03',
     title: 'Community services',
-    description: 'Connect people with companionship, practical programs and local support.',
+    description: 'Build connection through companionship, practical programs and community support.',
     icon: Users,
   },
   {
     number: '04',
     title: 'Coordination and partnerships',
-    description: 'Help organize thoughtful service delivery for people and partner organizations.',
+    description: 'Coordinate communication and service details for individuals and partner organizations.',
     icon: BriefcaseBusiness,
   },
 ]

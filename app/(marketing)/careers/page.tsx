@@ -13,7 +13,7 @@ export default function CareersPage() {
       <PageHero
         eyebrow="WORK WITH PURPOSE"
         title={<>Make a difference in <em>everyday life.</em></>}
-        description="We are building opportunities for people who want to make a practical difference for individuals, families and communities."
+        description="Explore work across care, home services and community support. Specific roles, requirements and availability can vary; start a conversation to learn what may fit your experience and interests."
         image={{ src: '/lifeline-editorial-careers.png', alt: 'Care and community-support professionals in a shift handover conversation' }}
       />
 
@@ -35,7 +35,7 @@ export default function CareersPage() {
           <div>
             <p className="career-note__label">INTERESTED IN JOINING US?</p>
             <h2>Let&apos;s start with <em>a conversation.</em></h2>
-            <p>Tell us a little about your experience and the kind of work you are interested in. Our team can share the right next step.</p>
+            <p>Roles, requirements and availability vary. When you write, tell us which area interests you, any relevant experience or training, and location or schedule considerations. Our team can share the appropriate next step and any role-specific details.</p>
           </div>
           <TextLink href="mailto:hello@lifelinecooperative.org?subject=Career%20opportunities">Email us about careers</TextLink>
         </div>

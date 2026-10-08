@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { commitments, serviceSteps } from '@/components/marketing/content'
 import { ContactCallout, Eyebrow, InfoCard, PageHero, SectionHeading } from '@/components/marketing/marketing-primitives'
 
@@ -24,8 +26,9 @@ export default function AboutPage() {
             <h2>Good support starts by <em>understanding what matters.</em></h2>
           </div>
           <div className="about-intro__copy">
-            <p>People bring different routines, goals and support networks. Our work starts with listening to each person and partner, then coordinating practical help that fits the situation.</p>
-            <p>From personal care and housekeeping to contracted services and community programs, Lifeline connects people with dependable support while keeping dignity and choice at the centre.</p>
+            <p>Lifeline is a community care co-operative that brings care, home services and community support into one conversation. We start by listening to the person, family or organization and learning what matters in the day-to-day setting.</p>
+            <p>That may mean personal care, companionship or respite; housekeeping, meals and other practical help at home; or facility, workforce and contracted support for an organization or community program.</p>
+            <p>A useful plan depends on context: routines and preferences, the setting, existing supports and the priorities of the people involved. We aim to keep the conversation respectful and the next step clear.</p>
           </div>
         </div>
       </section>
@@ -39,6 +42,37 @@ export default function AboutPage() {
           />
           <div className="commitment-grid">
             {commitments.map((item) => <InfoCard {...item} key={item.number} />)}
+          </div>
+        </div>
+      </section>
+
+      <section className="marketing-section audience-section" aria-labelledby="about-pathways-title">
+        <div className="site-container">
+          <SectionHeading
+            eyebrow="SUPPORT IN PRACTICE"
+            titleId="about-pathways-title"
+            title={<>Different needs, <em>one place to start.</em></>}
+            copy="Lifeline works with people, families and organizations. Explore the route closest to your situation, or contact us if your needs span more than one area."
+          />
+          <div className="audience-grid">
+            <Link className="audience-card" href="/services#care-support">
+              <span className="audience-card__number" aria-hidden="true">01</span>
+              <h3>People and families</h3>
+              <p>Personal care, companionship, respite and practical help at home can support everyday routines and independence.</p>
+              <span className="audience-card__link">Explore personal support<ArrowRight size={15} aria-hidden="true" /></span>
+            </Link>
+            <Link className="audience-card" href="/services#home-support">
+              <span className="audience-card__number" aria-hidden="true">02</span>
+              <h3>Homes and everyday life</h3>
+              <p>Housekeeping, meals, errands and other practical tasks can make home feel more manageable.</p>
+              <span className="audience-card__link">Explore home services<ArrowRight size={15} aria-hidden="true" /></span>
+            </Link>
+            <Link className="audience-card" href="/organizations">
+              <span className="audience-card__number" aria-hidden="true">03</span>
+              <h3>Organizations and communities</h3>
+              <p>Workforce, facility, cleaning and community services can support teams delivering programs and services.</p>
+              <span className="audience-card__link">Explore partnerships<ArrowRight size={15} aria-hidden="true" /></span>
+            </Link>
           </div>
         </div>
       </section>

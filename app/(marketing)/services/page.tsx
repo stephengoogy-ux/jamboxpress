@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import { commitments, serviceItems } from '@/components/marketing/content'
-import { ContactCallout, PageHero, SectionHeading, ServiceCard } from '@/components/marketing/marketing-primitives'
+import { commitments, serviceItems, serviceSteps } from '@/components/marketing/content'
+import { ContactCallout, Eyebrow, PageHero, PrimaryLink, SectionHeading, ServiceCard } from '@/components/marketing/marketing-primitives'
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -63,7 +63,7 @@ export default function ServicesPage() {
             eyebrow="FIND THE RIGHT SUPPORT"
             titleId="service-catalog-title"
             title={<>Explore options by <em>what you need.</em></>}
-            copy="Start with the group that sounds closest. Each service opens a prepared email draft, so you can ask about the option that matters to you."
+            copy="Use the categories as a starting point. If you are unsure, begin with what you want to make easier; the steps below explain how to find a clear next step."
           />
           <nav className="service-category-nav" aria-label="Jump to a service group">
             {serviceGroups.map((group) => <a href={`#${group.id}`} key={group.id}>{group.label}<span aria-hidden="true">↓</span></a>)}
@@ -86,6 +86,25 @@ export default function ServicesPage() {
                 </section>
               )
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="home-process" aria-labelledby="service-process-title">
+        <div className="site-container home-process__grid">
+          <div className="home-process__copy">
+            <Eyebrow>HOW TO GET STARTED</Eyebrow>
+            <h2 id="service-process-title">You don&apos;t need the <em>right service name.</em></h2>
+            <p>Start with the situation: who needs support, what would make everyday life or service delivery easier, and any practical details you already know. Together, we can work out what to explore next.</p>
+            <PrimaryLink href="/contact">Talk through your needs</PrimaryLink>
+          </div>
+          <div className="home-process__steps">
+            {serviceSteps.map((step) => (
+              <div className="home-process__step" key={step.number}>
+                <span>{step.number}</span>
+                <div><h3>{step.title}</h3><p>{step.description}</p></div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
