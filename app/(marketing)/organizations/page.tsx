@@ -14,7 +14,7 @@ export default function OrganizationsPage() {
         eyebrow="FOR ORGANIZATIONS"
         title={<>Dependable support for <em>the work you do.</em></>}
         description="Lifeline partners with government, non-profits, facilities and businesses to coordinate dependable people, cleaning services and community support."
-        image={{ src: '/lifeline-community.png', alt: 'Community members and support professionals together' }}
+        image={{ src: '/lifeline-editorial-partners.png', alt: 'Two community-service partners discussing a plan in a bright workspace' }}
       />
 
       <section className="marketing-section organization-section" aria-label="Organization services">

@@ -14,7 +14,7 @@ export default function AboutPage() {
         eyebrow="ABOUT LIFELINE"
         title={<>Care that sees the <em>whole person.</em></>}
         description="We bring care, home services and community support together with one purpose: helping people feel respected, supported and connected in everyday life."
-        image={{ src: '/lifeline-community.png', alt: 'People coming together at a community gathering' }}
+        image={{ src: '/lifeline-editorial-about.png', alt: 'Neighbors of different generations sharing a conversation around a table' }}
       />
 
       <section className="about-intro">

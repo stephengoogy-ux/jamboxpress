@@ -51,8 +51,8 @@ export function HomePage() {
           <div className="home-hero__visual">
             <div className="home-hero__image-frame">
               <Image
-                src="/lifeline-care.png"
-                alt="A caregiver sharing a warm moment with an older adult at home"
+                src="/lifeline-editorial-home.png"
+                alt="An older adult and her home-care worker sharing tea and conversation at home"
                 fill
                 priority
                 sizes="(max-width: 850px) 100vw, 54vw"

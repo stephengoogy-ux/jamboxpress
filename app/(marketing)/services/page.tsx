@@ -41,7 +41,7 @@ export default function ServicesPage() {
         eyebrow="OUR SERVICES"
         title={<>One team for care, home <em>&amp; community.</em></>}
         description="Explore practical, respectful support for people and families, plus dependable services for workplaces, facilities and community organizations."
-        image={{ src: '/lifeline-cleaning.png', alt: 'A team member providing professional cleaning in a bright interior' }}
+        image={{ src: '/lifeline-editorial-services.png', alt: 'A housekeeping professional preparing a sunlit community workspace' }}
         secondaryHref="#service-list"
         secondaryLabel="Browse by service"
       />

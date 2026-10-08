@@ -14,7 +14,7 @@ export default function CareersPage() {
         eyebrow="WORK WITH PURPOSE"
         title={<>Make a difference in <em>everyday life.</em></>}
         description="We are building opportunities for people who want to make a practical difference for individuals, families and communities."
-        image={{ src: '/lifeline-team.png', alt: 'A diverse team of Lifeline professionals standing together' }}
+        image={{ src: '/lifeline-editorial-careers.png', alt: 'Care and community-support professionals in a shift handover conversation' }}
       />
 
       <section className="marketing-section career-section" aria-label="Career areas at Lifeline">
