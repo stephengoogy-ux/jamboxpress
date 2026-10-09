@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { careerAreas, editorialPhotos } from '@/components/marketing/content'
 import { ContactCallout, Eyebrow, InfoCard, PageHero, SectionHeading, TextLink } from '@/components/marketing/marketing-primitives'
 
@@ -51,6 +53,31 @@ export default function CareersPage() {
           />
           <div className="commitment-grid career-areas">
             {careerAreas.map((area) => <InfoCard {...area} key={area.number} />)}
+          </div>
+        </div>
+      </section>
+
+      <section className="marketing-section career-opportunities" aria-labelledby="career-opportunities-title">
+        <div className="site-container">
+          <SectionHeading
+            eyebrow="AVAILABLE CAREER PATHS"
+            titleId="career-opportunities-title"
+            title={<>Find the place where your skills can <em>help most.</em></>}
+            copy="Explore the areas where Lifeline may have current or future opportunities. Select Apply to tell us which path interests you and start a conversation about fit, requirements and availability."
+          />
+          <div className="career-opportunities__grid">
+            {careerAreas.map((area) => (
+              <article className="career-opportunity" key={area.number}>
+                <div>
+                  <p className="career-opportunity__number">{area.number}</p>
+                  <h3>{area.title}</h3>
+                  <p>{area.description}</p>
+                </div>
+                <Link className="site-button site-button--small" href={`/contact?audience=careers&interest=${encodeURIComponent(area.title)}`}>
+                  Apply <ArrowRight size={15} aria-hidden="true" />
+                </Link>
+              </article>
+            ))}
           </div>
         </div>
       </section>
