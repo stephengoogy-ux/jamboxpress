@@ -44,6 +44,22 @@ export default function OrganizationsPage() {
         </div>
       </section>
 
+      <section className="marketing-section organization-details" aria-labelledby="organization-details-title">
+        <div className="site-container">
+          <SectionHeading
+            eyebrow="WHERE WE CAN HELP"
+            titleId="organization-details-title"
+            title={<>Start with the work your organization <em>needs covered.</em></>}
+            copy="The right conversation depends on your setting. These are useful starting points for planning a service or partnership discussion."
+          />
+          <div className="organization-details__grid">
+            <article><h3>People and coverage</h3><p>Discuss workforce, staffing, coordination or support needs connected to the people you serve.</p></article>
+            <article><h3>Places and operations</h3><p>Discuss cleaning, housekeeping, facility routines and the practical work that keeps a setting ready.</p></article>
+            <article><h3>Programs and community</h3><p>Discuss community services, contracted support and the outcomes your program is working toward.</p></article>
+          </div>
+        </div>
+      </section>
+
       <section className="marketing-section organization-section" aria-label="Organization services">
         <div className="site-container">
           <SectionHeading

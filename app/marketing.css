@@ -71,9 +71,19 @@
   display: inline-flex;
   align-items: center;
   gap: 11px;
-  width: max-content;
-  color: var(--site-navy);
 }
+
+.site-brand__logo {
+  display: block;
+  width: clamp(118px, 10vw, 156px);
+  height: auto;
+  object-fit: contain;
+}
+
+.site-brand--footer .site-brand__logo {
+  width: min(220px, 100%);
+}
+
 
 .site-brand__mark {
   position: relative;
@@ -1770,7 +1780,10 @@
 .career-guide,
 .organization-guide,
 .about-principles,
-.contact-response {
+.contact-response,
+.service-details,
+.career-details,
+.organization-details {
   background: var(--site-cream);
 }
 
@@ -1824,6 +1837,54 @@
 .about-principles__copy p + p,
 .contact-response__copy p + p {
   margin-top: 18px;
+}
+
+.service-details__grid,
+.career-details__grid,
+.organization-details__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 42px;
+}
+
+.service-details__grid article,
+.career-details__grid article,
+.organization-details__grid article {
+  min-height: 190px;
+  padding: 26px;
+  border: 1px solid #dbe5e8;
+  border-radius: var(--site-card-radius);
+  background: #fff;
+  box-shadow: var(--site-card-shadow);
+}
+
+.service-details__grid span {
+  display: block;
+  margin-bottom: 28px;
+  color: var(--site-coral);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.service-details__grid h3,
+.career-details__grid h3,
+.organization-details__grid h3 {
+  margin: 0 0 10px;
+  font-family: var(--site-serif);
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+.service-details__grid p,
+.career-details__grid p,
+.organization-details__grid p {
+  margin: 0;
+  color: #536873;
+  font-size: 15px;
+  line-height: 1.65;
 }
 
 .site-nav {
@@ -1954,13 +2015,13 @@
 
 .site-brand__logo {
   display: block;
-  width: clamp(170px, 15vw, 245px);
+  width: clamp(118px, 10vw, 156px);
   height: auto;
   object-fit: contain;
 }
 
 .site-brand--footer .site-brand__logo {
-  width: min(280px, 100%);
+  width: min(220px, 100%);
 }
 
 .site-brand__mark {
@@ -2886,7 +2947,14 @@
 
 @media (max-width: 680px) {
   .site-brand__logo {
-    width: 170px;
+    width: 128px;
+  }
+
+  .service-details__grid,
+  .career-details__grid,
+  .organization-details__grid {
+    grid-template-columns: 1fr;
+    margin-top: 28px;
   }
 
   .service-guide__grid,

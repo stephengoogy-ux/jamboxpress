@@ -54,6 +54,22 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <section className="marketing-section service-details" aria-labelledby="service-details-title">
+        <div className="site-container">
+          <SectionHeading
+            eyebrow="A CLEARER START"
+            titleId="service-details-title"
+            title={<>What to have ready for a <em>useful conversation.</em></>}
+            copy="You can contact us before every detail is decided. These starting points simply help us understand the situation faster."
+          />
+          <div className="service-details__grid">
+            <article><span>01</span><h3>Who needs support?</h3><p>Tell us whether you are reaching out for yourself, a family member, a team, a facility or a community program.</p></article>
+            <article><span>02</span><h3>What would help?</h3><p>Share the task, routine or service gap you want to make easier, even if you do not know its formal name.</p></article>
+            <article><span>03</span><h3>What timing matters?</h3><p>Include any timing, location or coordination details that would shape the next conversation.</p></article>
+          </div>
+        </div>
+      </section>
+
       <section className="service-confidence" aria-label="What guides Lifeline services">
         <div className="site-container service-confidence__grid">
           {commitments.slice(0, 3).map(({ number, title, description, icon: Icon }) => (

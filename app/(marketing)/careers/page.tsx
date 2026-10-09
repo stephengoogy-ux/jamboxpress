@@ -26,6 +26,22 @@ export default function CareersPage() {
         </div>
       </section>
 
+      <section className="marketing-section career-details" aria-labelledby="career-details-title">
+        <div className="site-container">
+          <SectionHeading
+            eyebrow="A GOOD FIRST MESSAGE"
+            titleId="career-details-title"
+            title={<>Tell us where you want to <em>make a difference.</em></>}
+            copy="A short, honest introduction is enough to begin. The details below help us understand what kind of opportunity you are exploring."
+          />
+          <div className="career-details__grid">
+            <article><h3>Your area of interest</h3><p>Care, home services, housekeeping, community support, coordination or another area that connects with your experience.</p></article>
+            <article><h3>Your experience</h3><p>Share relevant work, training, lived experience or strengths you would bring to a role.</p></article>
+            <article><h3>Your practical needs</h3><p>Include your city or region, preferred schedule and any questions about the next step.</p></article>
+          </div>
+        </div>
+      </section>
+
       <section className="marketing-section career-section" aria-label="Career areas at Lifeline">
         <div className="site-container">
           <SectionHeading
