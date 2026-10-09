@@ -55,6 +55,33 @@ export default function CareersPage() {
         </div>
       </section>
 
+      <section className="marketing-section career-process" aria-labelledby="career-process-title">
+        <div className="site-container">
+          <SectionHeading
+            eyebrow="THE CONVERSATION"
+            titleId="career-process-title"
+            title={<>A simple path from interest to <em>next steps.</em></>}
+            copy="We keep the first conversation straightforward. You do not need to have every answer before reaching out."
+          />
+          <ol className="career-process__steps">
+            <li><span>01</span><div><h3>Introduce yourself</h3><p>Tell us what kind of work interests you, where you are located and how you heard about Lifeline.</p></div></li>
+            <li><span>02</span><div><h3>Share your strengths</h3><p>Include relevant experience, training, certifications or lived experience that may connect with the work.</p></div></li>
+            <li><span>03</span><div><h3>Explore the fit</h3><p>We can discuss the setting, responsibilities, availability and any role-specific requirements that apply.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section className="marketing-section career-faq" aria-labelledby="career-faq-title">
+        <div className="site-container career-faq__layout">
+          <SectionHeading eyebrow="COMMON QUESTIONS" titleId="career-faq-title" title={<>Before you <em>reach out.</em></>} copy="A few practical answers to help you decide what to include in your first message." />
+          <div className="career-faq__list">
+            <details><summary>Do I need a specific job title?</summary><p>No. Describe the kind of work or setting that interests you and we can help identify the closest opportunity.</p></details>
+            <details><summary>What should I include in my email?</summary><p>Share your area of interest, location, relevant experience or training, availability and any question you want answered.</p></details>
+            <details><summary>Are requirements the same for every role?</summary><p>No. Requirements can vary by responsibility and setting. We can explain the qualifications, screening or training connected to a specific opportunity.</p></details>
+          </div>
+        </div>
+      </section>
+
       <section className="career-note">
         <div className="site-container career-note__inner">
           <div>
