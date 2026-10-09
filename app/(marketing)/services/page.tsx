@@ -47,6 +47,13 @@ export default function ServicesPage() {
         secondaryLabel="Browse by service"
       />
 
+      <section className="marketing-section service-guide" aria-labelledby="service-guide-title">
+        <div className="site-container service-guide__grid">
+          <div><Eyebrow>CHOOSING A SERVICE</Eyebrow><h2 id="service-guide-title">Start with the outcome, <em>not the label.</em></h2></div>
+          <div className="service-guide__copy"><p>You may know that a family member needs more help at home, that a facility needs reliable coverage, or that a community program needs practical support. You do not need to know the formal service name before you contact us.</p><p>Tell us what is happening, who is involved and what would make the situation easier. We can help identify the most relevant service area and the details to discuss next.</p></div>
+        </div>
+      </section>
+
       <section className="service-confidence" aria-label="What guides Lifeline services">
         <div className="site-container service-confidence__grid">
           {commitments.slice(0, 3).map(({ number, title, description, icon: Icon }) => (

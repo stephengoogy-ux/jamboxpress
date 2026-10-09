@@ -1766,7 +1766,68 @@
     gap: 20px;
   }
 
-  .site-nav {
+.service-guide,
+.career-guide,
+.organization-guide,
+.about-principles,
+.contact-response {
+  background: var(--site-cream);
+}
+
+.service-guide__grid,
+.career-guide__grid,
+.organization-guide__grid,
+.about-principles__grid,
+.contact-response__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: start;
+  gap: clamp(42px, 8vw, 120px);
+}
+
+.service-guide__grid h2,
+.career-guide__grid h2,
+.organization-guide__grid h2,
+.about-principles__grid h2,
+.contact-response__grid h2 {
+  max-width: 470px;
+  margin: 12px 0 0;
+  font-family: var(--site-serif);
+  font-size: clamp(34px, 4vw, 54px);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+.service-guide__copy,
+.career-guide__copy,
+.organization-guide__copy,
+.about-principles__copy,
+.contact-response__copy {
+  max-width: 620px;
+  color: #536873;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.service-guide__copy p,
+.career-guide__copy p,
+.organization-guide__copy p,
+.about-principles__copy p,
+.contact-response__copy p {
+  margin: 0;
+}
+
+.service-guide__copy p + p,
+.career-guide__copy p + p,
+.organization-guide__copy p + p,
+.about-principles__copy p + p,
+.contact-response__copy p + p {
+  margin-top: 18px;
+}
+
+.site-nav {
+
     gap: 16px;
   }
 
@@ -1891,7 +1952,19 @@
     height: 68px;
   }
 
-  .site-brand__mark {
+.site-brand__logo {
+  display: block;
+  width: clamp(170px, 15vw, 245px);
+  height: auto;
+  object-fit: contain;
+}
+
+.site-brand--footer .site-brand__logo {
+  width: min(280px, 100%);
+}
+
+.site-brand__mark {
+
     width: 41px;
     height: 41px;
   }
@@ -2812,6 +2885,27 @@
 }
 
 @media (max-width: 680px) {
+  .site-brand__logo {
+    width: 170px;
+  }
+
+  .service-guide__grid,
+  .career-guide__grid,
+  .organization-guide__grid,
+  .about-principles__grid,
+  .contact-response__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .service-guide__grid h2,
+  .career-guide__grid h2,
+  .organization-guide__grid h2,
+  .about-principles__grid h2,
+  .contact-response__grid h2 {
+    font-size: 40px;
+  }
+
   .home-slider__image-note {
     top: 18px;
   }

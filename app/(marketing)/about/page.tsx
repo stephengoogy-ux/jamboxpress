@@ -46,6 +46,19 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="marketing-section about-principles" aria-labelledby="about-principles-title">
+        <div className="site-container about-principles__grid">
+          <div>
+            <Eyebrow>WHAT THE NAME MEANS</Eyebrow>
+            <h2 id="about-principles-title">A lifeline is practical, <em>human support.</em></h2>
+          </div>
+          <div className="about-principles__copy">
+            <p>The Lifeline mark brings together a home, a heart and open hands. It reflects the kind of support we aim to make easier to find: care that respects the person, practical help that fits real routines, and services that strengthen community.</p>
+            <p>As a co-operative, Lifeline is focused on useful relationships rather than one-size-fits-all solutions. The first step is always a conversation about the people, place and priorities involved.</p>
+          </div>
+        </div>
+      </section>
+
       <section className="marketing-section audience-section" aria-labelledby="about-pathways-title">
         <div className="site-container">
           <SectionHeading

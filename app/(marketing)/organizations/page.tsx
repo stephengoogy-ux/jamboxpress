@@ -37,6 +37,13 @@ export default function OrganizationsPage() {
         primaryAction="Discuss a partnership"
       />
 
+      <section className="marketing-section organization-guide" aria-labelledby="organization-guide-title">
+        <div className="site-container organization-guide__grid">
+          <div><Eyebrow>WORKING TOGETHER</Eyebrow><h2 id="organization-guide-title">Useful support starts with <em>shared context.</em></h2></div>
+          <div className="organization-guide__copy"><p>Organizations know their people, programs and operating environment best. Lifeline brings service experience and practical coordination to the conversation.</p><p>Whether you are planning a contract, reviewing a service gap or exploring a community partnership, we can begin with the setting and the outcome you are working toward.</p></div>
+        </div>
+      </section>
+
       <section className="marketing-section organization-section" aria-label="Organization services">
         <div className="site-container">
           <SectionHeading

@@ -144,6 +144,19 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         </div>
       </section>
 
+      <section className="marketing-section contact-response" aria-labelledby="contact-response-title">
+        <div className="site-container contact-response__grid">
+          <div>
+            <Eyebrow>WHAT HAPPENS NEXT</Eyebrow>
+            <h2 id="contact-response-title">Your message gives us a <em>place to begin.</em></h2>
+          </div>
+          <div className="contact-response__copy">
+            <p>Once you send the email, our team can review the context you chose to share and respond with the most useful next step. That may be a follow-up question, a conversation about fit, or information about the service area you selected.</p>
+            <p>Because email is the current contact route, response timing can vary. If your situation is urgent or there is an immediate safety concern, use local emergency or crisis services instead.</p>
+          </div>
+        </div>
+      </section>
+
       <section className="contact-guidance" aria-labelledby="contact-guidance-title">
         <div className="site-container contact-guidance__grid">
           <div className="contact-guidance__intro">

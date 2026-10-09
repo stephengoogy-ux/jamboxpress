@@ -1,9 +1,10 @@
 'use client'
 
+import Image from 'next/image'
 import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Activity, ArrowRight, Menu, X } from 'lucide-react'
+import { ArrowRight, Menu, X } from 'lucide-react'
 
 const navigation = [
   { label: 'Home', href: '/' },
@@ -36,11 +37,7 @@ export function SiteHeader() {
       >
       <div className="site-container site-header__inner">
         <Link className="site-brand" href="/" aria-label="Lifeline home">
-          <span className="site-brand__mark" aria-hidden="true"><Activity size={22} strokeWidth={1.7} /></span>
-          <span className="site-brand__copy">
-            <strong>Lifeline</strong>
-            <small>COMMUNITY CARE &amp; HOME SERVICES</small>
-          </span>
+          <Image className="site-brand__logo" src="/lifeline-logo.png" alt="Lifeline Community Care and Home Services Coop" width={245} height={86} priority />
         </Link>
 
         <nav className="site-nav" aria-label="Main navigation">

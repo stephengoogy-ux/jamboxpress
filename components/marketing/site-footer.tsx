@@ -1,5 +1,6 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import { Activity, Mail, MapPin } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
 
 export function SiteFooter() {
   return (
@@ -7,11 +8,7 @@ export function SiteFooter() {
       <div className="site-container site-footer__main">
         <div className="site-footer__brand">
           <Link className="site-brand site-brand--footer" href="/" aria-label="Lifeline home">
-            <span className="site-brand__mark" aria-hidden="true"><Activity size={22} strokeWidth={1.7} /></span>
-            <span className="site-brand__copy">
-              <strong>Lifeline</strong>
-              <small>COMMUNITY CARE &amp; HOME SERVICES</small>
-            </span>
+            <Image className="site-brand__logo" src="/lifeline-logo.png" alt="Lifeline Community Care and Home Services Coop" width={320} height={112} />
           </Link>
           <p>Care, support and practical services for stronger people and communities.</p>
           <div className="site-footer__detail"><MapPin size={16} aria-hidden="true" /><span>Victoria, Vancouver Island and communities across Canada</span></div>
