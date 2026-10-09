@@ -66,6 +66,17 @@ export default function CareersPage() {
         </div>
       </section>
 
+      <section className="marketing-section detail-panel-section" aria-labelledby="career-experience-title">
+        <div className="site-container">
+          <SectionHeading eyebrow="WHAT TO EXPECT" titleId="career-experience-title" title={<>Find work that fits your <em>strengths.</em></>} copy="A career conversation can be useful even when you are still exploring. Share what you know, what you want to learn and the setting where you do your best work." />
+          <div className="detail-panel-grid">
+            <article><h3>People skills matter</h3><p>Listening, patience, reliability and respect are valuable in every care and community support setting.</p></article>
+            <article><h3>Every role has standards</h3><p>Specific positions may require training, screening, certifications or other qualifications. We can clarify what applies to the opportunity.</p></article>
+            <article><h3>Growth starts with clarity</h3><p>Ask about the work, schedule, setting and expectations so you can decide whether a role is a good fit.</p></article>
+          </div>
+        </div>
+      </section>
+
       <ContactCallout
         eyebrow="MAKE AN IMPACT WITH LIFELINE"
         title={<>Good work can make <em>everyday life better.</em></>}

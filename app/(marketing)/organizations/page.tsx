@@ -101,6 +101,17 @@ export default function OrganizationsPage() {
         </div>
       </section>
 
+      <section className="marketing-section detail-panel-section" aria-labelledby="partnership-fit-title">
+        <div className="site-container">
+          <SectionHeading eyebrow="A GOOD FIT STARTS HERE" titleId="partnership-fit-title" title={<>Bring the challenge, <em>not just the specification.</em></>} copy="A first conversation can begin before a scope of work is complete. The more context you share, the easier it is to explore a practical fit." />
+          <div className="detail-panel-grid">
+            <article><h3>Tell us about the setting</h3><p>Explain the facility, workplace, public service or community program, including who uses it and what must happen there.</p></article>
+            <article><h3>Describe the pressure point</h3><p>Share the coverage gap, operational task or service outcome that is creating the need today.</p></article>
+            <article><h3>Define success together</h3><p>Discuss timing, coordination, responsibilities and the level of support that would make the work dependable.</p></article>
+          </div>
+        </div>
+      </section>
+
       <ContactCallout
         eyebrow="LET’S BUILD A PARTNERSHIP"
         title={<>Tell us what your organization <em>needs to accomplish.</em></>}

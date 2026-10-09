@@ -133,6 +133,17 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <section className="marketing-section detail-panel-section" aria-labelledby="service-experience-title">
+        <div className="site-container">
+          <SectionHeading eyebrow="WHAT SUPPORT CAN LOOK LIKE" titleId="service-experience-title" title={<>Support shaped around <em>real routines.</em></>} copy="The right service depends on the person, the setting and the outcome you are working toward. These examples can help you describe what you need." />
+          <div className="detail-panel-grid">
+            <article><h3>At home</h3><p>Support may include personal routines, companionship, respite, meals, errands or housekeeping that helps someone remain comfortable at home.</p></article>
+            <article><h3>After a change</h3><p>A hospital stay, a change in mobility or a new caregiving responsibility can create new needs. Start with what has changed and what feels difficult now.</p></article>
+            <article><h3>For a team or facility</h3><p>Organizations may need dependable cleaning, staffing, coordination or community service support that fits their existing operations.</p></article>
+          </div>
+        </div>
+      </section>
+
       <ContactCallout
         eyebrow="NOT SURE WHERE TO START?"
         title={<>Let&apos;s figure out the <em>right fit together.</em></>}

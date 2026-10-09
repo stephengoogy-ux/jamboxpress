@@ -1839,6 +1839,38 @@
   margin-top: 18px;
 }
 
+.detail-panel-section {
+  background: var(--site-pale-blue);
+}
+
+.detail-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 42px;
+}
+
+.detail-panel-grid article {
+  padding: 28px;
+  border-left: 3px solid var(--site-coral);
+  background: #fff;
+}
+
+.detail-panel-grid h3 {
+  margin: 0 0 12px;
+  font-family: var(--site-serif);
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+.detail-panel-grid p {
+  margin: 0;
+  color: #536873;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 .service-details__grid,
 .career-details__grid,
 .organization-details__grid {
@@ -2950,6 +2982,7 @@
     width: 128px;
   }
 
+  .detail-panel-grid,
   .service-details__grid,
   .career-details__grid,
   .organization-details__grid {

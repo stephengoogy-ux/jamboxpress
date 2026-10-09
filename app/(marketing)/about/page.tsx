@@ -108,6 +108,17 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="marketing-section detail-panel-section" aria-labelledby="about-details-title">
+        <div className="site-container">
+          <SectionHeading eyebrow="A CLOSER LOOK" titleId="about-details-title" title={<>What Lifeline means by <em>community care.</em></>} copy="Community care is not one service or one setting. It is the practical network of people, routines and resources that helps everyday life work." />
+          <div className="detail-panel-grid">
+            <article><h3>Person-led</h3><p>We begin with the person’s goals, preferences and routines, rather than assuming the same plan works for everyone.</p></article>
+            <article><h3>Connected</h3><p>Care, home services and community support can overlap. We help make the next conversation easier when needs cross service areas.</p></article>
+            <article><h3>Practical</h3><p>Good intentions become useful when expectations, responsibilities and communication are clear from the start.</p></article>
+          </div>
+        </div>
+      </section>
+
       <ContactCallout
         title={<>Let&apos;s talk about the support <em>that feels right.</em></>}
         description="Tell us a little about what you are looking for and we will help you find the right next step."
