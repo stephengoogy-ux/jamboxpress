@@ -40,7 +40,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="OUR SERVICES"
         title={<>One team for care, home <em>&amp; community.</em></>}
-        description="Explore practical, respectful support for people and families, plus dependable services for workplaces, facilities and community organizations."
+        description="From a few hours of help at home to dependable support for a whole facility, we bring care, coordination and practical services together around the outcome you need."
         image={editorialPhotos.services}
         primaryAction="Ask about services"
         secondaryHref="#service-list"

@@ -58,7 +58,7 @@ export function HomePage() {
             eyebrow="START HERE"
             titleId="audience-title"
             title={<>What brings you here <em>today?</em></>}
-            copy="Choose the path closest to what you need. You can always explore the full service list or get in touch if you are unsure."
+            copy="Start with the situation, not a service label. Choose the path closest to what you need, or contact us and we will help you find the clearest next step."
           />
           <div className="audience-grid">
             {supportAreas.map((area) => (

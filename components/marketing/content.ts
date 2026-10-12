@@ -52,14 +52,14 @@ export const serviceItems: ServiceItem[] = [
   {
     number: '01',
     title: 'Healthcare services',
-    description: 'Practical, respectful care and everyday support that promotes dignity, safety and independence.',
+    description: 'Person-centred care and everyday support that protects dignity, builds confidence and helps people keep their routines.',
     category: 'Care and support',
     icon: HeartHandshake,
   },
   {
     number: '02',
     title: 'Residential housekeeping',
-    description: 'Reliable cleaning, laundry and home assistance that helps people feel comfortable where they live.',
+    description: 'Reliable cleaning, laundry and home assistance that keeps living spaces comfortable, safe and easier to manage.',
     category: 'Home services',
     icon: Home,
   },
