@@ -8,30 +8,14 @@ export const metadata: Metadata = {
 }
 
 const serviceGroups = [
-  {
-    id: 'care-support',
-    label: 'Care & personal support',
-    eyebrow: '01 / CARE & PERSONAL SUPPORT',
-    title: 'Care and personal support',
-    description: 'Explore personal care, caregiver services, companionship, dementia support, respite and help after a hospital stay.',
-    categories: ['Care and support'],
-  },
-  {
-    id: 'home-support',
-    label: 'Home & everyday support',
-    eyebrow: '02 / HOME & EVERYDAY SUPPORT',
-    title: 'Home and everyday support',
-    description: 'Housekeeping, meals, transportation and errands can make day-to-day life at home feel more manageable.',
-    categories: ['Home services'],
-  },
-  {
-    id: 'organization-support',
-    label: 'Organizations & communities',
-    eyebrow: '03 / ORGANIZATIONS & COMMUNITIES',
-    title: 'Organizations and communities',
-    description: 'Find professional cleaning, workforce and contracted services, plus practical community support programs.',
-    categories: ['Workplace services', 'Community services', 'Organization support'],
-  },
+  { id: 'home-health', label: 'Home health & personal care', eyebrow: '01 / HOME HEALTH & PERSONAL CARE', title: 'Home health and personal care', description: 'Non-clinical HCA and home support for daily routines, mobility, hygiene, meals, dementia support and recovery at home.', categories: ['Care and support'] },
+  { id: 'senior-disability', label: 'Senior & disability care', eyebrow: '02 / SENIOR & DISABILITY CARE', title: 'Senior and disability care', description: 'Practical support that helps seniors and people with disabilities stay connected, confident and as independent as possible.', categories: ['Care and support'] },
+  { id: 'respite-companion', label: 'Respite & companion care', eyebrow: '03 / RESPITE & COMPANION CARE', title: 'Respite and companion care', description: 'Friendly visiting, social connection, overnight support and short-term caregiver relief for families and individuals.', categories: ['Care and support'] },
+  { id: 'home-services', label: 'Housekeeping & home services', eyebrow: '04 / HOUSEKEEPING & HOME SERVICES', title: 'Housekeeping and home services', description: 'Regular, deep and senior-friendly cleaning, laundry, organization, meals, errands and practical support around the home.', categories: ['Home services'] },
+  { id: 'commercial-cleaning', label: 'Commercial & institutional cleaning', eyebrow: '05 / COMMERCIAL & INSTITUTIONAL CLEANING', title: 'Commercial and institutional cleaning', description: 'Scheduled cleaning, sanitation and facility support for offices, clinics, schools, daycares, housing, government and community spaces.', categories: ['Workplace services'] },
+  { id: 'meal-transport', label: 'Meal, transport & errands', eyebrow: '06 / MEALS, TRANSPORTATION & ERRANDS', title: 'Meals, transportation and errands', description: 'Meal preparation, grocery support, appointment accompaniment, prescription pickup and community transportation where appropriate.', categories: ['Home services'] },
+  { id: 'staffing-contracts', label: 'Facility staffing & contracts', eyebrow: '07 / FACILITY STAFFING & CONTRACT SERVICES', title: 'Facility staffing and contract services', description: 'Flexible HCA, care aide, housekeeping, janitorial, laundry and community support staffing for organizations and facilities.', categories: ['Organization support'] },
+  { id: 'community-programs', label: 'Community & government programs', eyebrow: '08 / COMMUNITY & GOVERNMENT PROGRAMS', title: 'Community and government programs', description: 'Support for nonprofits, public agencies, Indigenous and community organizations through outreach, respite, housing and service contracts.', categories: ['Community services', 'Organization support'] },
 ]
 
 export default function ServicesPage() {
@@ -89,6 +73,7 @@ export default function ServicesPage() {
             title={<>Explore options by <em>what you need.</em></>}
             copy="Use the categories as a starting point. If you are unsure, begin with what you want to make easier; the steps below explain how to find a clear next step."
           />
+          <div className="service-scope-note"><strong>Care scope matters.</strong> Lifeline&apos;s HCA and home-support services are non-clinical. Nursing, physiotherapy, occupational therapy and other regulated services are provided only through appropriately licensed professionals and agreements.</div>
           <nav className="service-category-nav" aria-label="Jump to a service group">
             {serviceGroups.map((group) => <a href={`#${group.id}`} key={group.id}>{group.label}<span aria-hidden="true">↓</span></a>)}
           </nav>
