@@ -12,6 +12,9 @@ const navigation = [
   { label: 'Services', href: '/services' },
   { label: 'Careers', href: '/careers' },
   { label: 'Government & non-profit', href: '/organizations' },
+  { label: 'Request services', href: '/request-services' },
+  { label: 'Commercial quote', href: '/commercial-quote' },
+  { label: 'Portal', href: '/portal' },
 ]
 
 function isCurrentPage(pathname: string, href: string) {

@@ -1,0 +1,9 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import { ArrowRight, ClipboardList, HeartHandshake, MapPin } from 'lucide-react'
+
+export const metadata: Metadata = { title: 'Request services', description: 'Tell Lifeline what support would make everyday life easier.' }
+
+export default function RequestServicesPage() {
+  return <main className="platform-page"><section className="platform-hero"><div className="site-container platform-hero__grid"><div><p className="platform-kicker">REQUEST SERVICES</p><h1>Start with what would make life <em>easier.</em></h1><p className="platform-lead">Share a little about the support you need. Our team will listen, clarify the next step and connect you with the right Lifeline service.</p><Link className="site-button" href="/contact?audience=family">Start a request <ArrowRight size={16}/></Link></div><div className="platform-hero-card"><ClipboardList size={28}/><b>A thoughtful intake</b><span>We ask about people, routines, location and timing so support is shaped around real life.</span></div></div></section><section className="platform-section"><div className="site-container"><div className="platform-section-intro"><p className="platform-kicker">WHAT TO EXPECT</p><h2>A clear path from first question to <em>right support.</em></h2></div><div className="platform-steps"><article><b>01</b><HeartHandshake size={20}/><h3>Tell us what is changing</h3><p>Care at home, respite, companionship, senior support or practical help.</p></article><article><b>02</b><MapPin size={20}/><h3>Share your setting</h3><p>Let us know your community, schedule and the people involved.</p></article><article><b>03</b><ArrowRight size={20}/><h3>Plan the next step</h3><p>We will follow up with options, questions and a clear route forward.</p></article></div></div></section></main>
+}

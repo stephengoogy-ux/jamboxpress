@@ -1,0 +1,9 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import { ArrowRight, Building2, ClipboardCheck, Sparkles } from 'lucide-react'
+
+export const metadata: Metadata = { title: 'Request a commercial quote', description: 'Request a thoughtful, practical quote for commercial housekeeping and facility cleaning.' }
+
+export default function CommercialQuotePage() {
+  return <main className="platform-page"><section className="platform-hero platform-hero--business"><div className="site-container platform-hero__grid"><div><p className="platform-kicker">FOR ORGANIZATIONS</p><h1>Reliable service for spaces that <em>matter.</em></h1><p className="platform-lead">Tell us about your facility, contract needs or community program. We build clear scopes, dependable staffing and practical service plans.</p><Link className="site-button" href="/contact?audience=organization">Request a commercial quote <ArrowRight size={16}/></Link></div><div className="platform-hero-card"><Building2 size={28}/><b>Built for partners</b><span>Healthcare facilities, workplaces, nonprofits, government programs and community organizations.</span></div></div></section><section className="platform-section"><div className="site-container"><div className="platform-section-intro"><p className="platform-kicker">OUR APPROACH</p><h2>More than a price: a service plan you can <em>count on.</em></h2></div><div className="platform-steps"><article><ClipboardCheck size={20}/><h3>Understand the scope</h3><p>We review the setting, schedule, standards and people who rely on the service.</p></article><article><Sparkles size={20}/><h3>Build the plan</h3><p>We recommend a practical mix of staffing, routines, quality checks and reporting.</p></article><article><ArrowRight size={20}/><h3>Start with confidence</h3><p>Move forward with clear responsibilities, communication and contract details.</p></article></div></div></section></main>
+}
