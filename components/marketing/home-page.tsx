@@ -9,7 +9,7 @@ const supportAreas = [
     number: '01',
     title: 'Individuals & families',
     description: 'Care, companionship, respite and practical help at home, shaped around your routines.',
-    href: '/services#care-support',
+    href: '/services',
     label: 'Explore personal support',
   },
   {
@@ -23,7 +23,7 @@ const supportAreas = [
     number: '03',
     title: 'Communities',
     description: 'Community programs and practical services that help people feel connected.',
-    href: '/services#organization-support',
+    href: '/organizations',
     label: 'Explore community support',
   },
 ]

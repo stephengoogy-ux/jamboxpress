@@ -17,7 +17,7 @@ const slides = [
     emphasis: 'with a person.',
     description: 'Thoughtful care and practical help, shaped around the people and routines that matter.',
     action: 'Explore home support',
-    href: '/services#care-support',
+    href: '/services',
     image: editorialPhotos.home,
   },
   {
@@ -28,7 +28,7 @@ const slides = [
     emphasis: 'go a long way.',
     description: 'Reliable housekeeping and everyday home services to make daily life feel more manageable.',
     action: 'Explore home services',
-    href: '/services#home-support',
+    href: '/services',
     image: editorialPhotos.services,
   },
   {
@@ -39,7 +39,7 @@ const slides = [
     emphasis: 'when we connect.',
     description: 'Practical community programs and support that help people feel connected and included.',
     action: 'Explore community services',
-    href: '/services#organization-support',
+    href: '/organizations',
     image: editorialPhotos.about,
   },
   {
