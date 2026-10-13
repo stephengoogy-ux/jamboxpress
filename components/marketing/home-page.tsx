@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { featuredServices, serviceSteps } from './content'
 import { HomeHero } from './home-hero'
-import { ContactCallout, Eyebrow, PrimaryLink, SectionHeading, ServiceCard } from './marketing-primitives'
+import { ContactCallout, SectionHeading } from './marketing-primitives'
 
 const supportAreas = [
   {
@@ -68,40 +67,6 @@ export function HomePage() {
                 <p>{area.description}</p>
                 <span className="audience-card__link">{area.label}<ArrowRight size={15} aria-hidden="true" /></span>
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="marketing-section home-services" aria-label="Featured services">
-        <div className="site-container">
-          <SectionHeading
-            eyebrow="WHAT WE DO"
-            title={<>Practical help, <em>thoughtfully coordinated.</em></>}
-            copy="Flexible support for people, homes, workplaces and communities, shaped around what each situation calls for."
-            actionHref="/services"
-            actionLabel="View all services"
-          />
-          <div className="service-grid service-grid--preview">
-            {featuredServices.map((service) => <ServiceCard service={service} key={service.number} />)}
-          </div>
-        </div>
-      </section>
-
-      <section className="home-process" aria-labelledby="home-process-title">
-        <div className="site-container home-process__grid">
-          <div className="home-process__copy">
-            <Eyebrow>A SIMPLE START</Eyebrow>
-            <h2 id="home-process-title">Good support begins <em>with listening.</em></h2>
-            <p>We make the next step clear, so you can focus on what matters and we can work out the right support together.</p>
-            <PrimaryLink href="/contact">Start a conversation</PrimaryLink>
-          </div>
-          <div className="home-process__steps">
-            {serviceSteps.map((step) => (
-              <div className="home-process__step" key={step.number}>
-                <span>{step.number}</span>
-                <div><h3>{step.title}</h3><p>{step.description}</p></div>
-              </div>
             ))}
           </div>
         </div>
